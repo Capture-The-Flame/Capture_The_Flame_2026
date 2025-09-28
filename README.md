@@ -1,19 +1,19 @@
-# Capture The Flame 2026
+# Capture The Flame 2026 🔥
 
 This repository serves as the full library of challenges created for UIC's Capture the Flame challenge creation season.
 
 
 ### Challenges were made in preparation for the following events:
 
-Hack-o-Ween => Halloween Capture the Flag
+Hack-o-Ween 🎃 => Halloween Capture the Flag
 
-Ignite the Flame => Introductory Mini CTF
+Ignite the Flame 💥 => Introductory Mini CTF
 
-Into the Flame => Reverse Engineering + Binary Exploit Focused CTF
+Into the Flame 🔍 => Reverse Engineering + Binary Exploit Focused CTF
 
-Byte the Flame => Mini CTF Competition
+Byte the Flame ❤️‍🔥 => Mini CTF Competition
 
-Capture the Flame => Full Event
+Capture the Flame 🔥 => Full Event
 
 ---
 
