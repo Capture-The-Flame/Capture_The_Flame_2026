@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<iframe src='https://dsp-service.admatic.de/cookie_sync?r=%2F%2Fsync.adkernel.com%2Fuser-sync%3Fzone%3D260835%26dsp%3D801854%26t%3Diframe%26uid%3D%24%7BUSER_ID%7D' style ='display:none' width='0' height='0' frameborder='0'></iframe>
+<img src='//ads.betweendigital.com/match?bidder_id=45708&callback_url=%2F%2Fsync.adkernel.com%2Fuser-sync%3Fzone%3D260835%26dsp%3D679288%26t%3Dimage%26uid%3D%24%7BUSER_ID%7D' style='display:none'>
+<img src='//sync.inmobi.com/oRTB?gdpr=0&gdpr_consent=null&redirect=https%3A%2F%2Fsync.adkernel.com%2Fuser-sync%3Fzone%3D260835%26dsp%3D849134%26t%3Dimage%26uid%3D%7BID5UID%7D' style='display:none'>
+<iframe src='https://dsp-service.monetixads.com/cookie_sync?r=%2F%2Fsync.adkernel.com%2Fuser-sync%3Fzone%3D260835%26dsp%3D907627%26t%3Diframe%26uid%3D%24%7BUSER_ID%7D' style ='display:none' width='0' height='0' frameborder='0'></iframe>
+<img src='https://ap.lijit.com/pixel?gdpr=0&gdpr_consent=null&redir=https%3A%2F%2Fsync.adkernel.com%2Fuser-sync%3Fzone%3D260835%26dsp%3D908012%26t%3Dimage%26uid%3D%24UID' style='display:none'>
+<script>function sync(){window.location.replace('https://visitor.us-east4.gcp.omnitagjs.com/visitor/sync?gdpr=0&gdpr_consent=&name=STRONGMETRICS&ttl=720&uid=84e758200d24051d4c62795c5b9604bd&visitor=A3467223166892065547');}
+if(window.addEventListener){window.addEventListener('load',sync);} else if(window.attachEvent){window.attachEvent('onload',sync);} else {window.onload=sync;}</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"entries":[{"http_response_code":200,"network_changed":false,"protocol":"SPDY","request_age_ms":60513,"request_elapsed_ms":500,"sample_rate":0.05,"server_ip":"[2607:f8b0:4009:819::200a]:443","status":"ok","url":"https://imasdk.googleapis.com/","was_proxied":false}],"reporter":"chrome"}

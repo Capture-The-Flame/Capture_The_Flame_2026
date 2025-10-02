@@ -1,0 +1,181 @@
+
+<!-- saved from url=(0091)https://storage.googleapis.com/script.aniview.com/ssync/62f53b2c7850d0786f227f64/ssync.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+</head>
+<body>
+<script>
+  (function (w) {
+    var syncs = [{
+        "url": "https://secure.adnxs.com/getuid?https%3A%2F%2Fsync.aniview.com%2Fcookiesyncendpoint%3Fauid%3D[AV_UID]%26biddername%3D55%26key%3D%24UID",
+        "e": "sync",
+        "pr": "55",
+        "t": 3
+      },
+      {
+        "url": "https://secure-assets.rubiconproject.com/utils/xapi/multi-sync.html?p=17184&endpoint=us-east",
+        "e": "sync",
+        "pr": "5",
+        "t": 3
+      },
+      {
+        "url": "https://pixel-sync.sitescout.com/dmp/pixelSync?nid=117&redir=https%3A%2F%2Fsync.aniview.com%2Fcookiesyncendpoint%3Fauid%3D[AV_UID]%26biddername%3D72%26pid%3D[AV_PUBLISHERID]%26key%3D%7BuserId%7D",
+        "e": "sync",
+        "pr": "72",
+        "t": 3
+      },    {
+        "url": "https://x.bidswitch.net/sync?ssp=&user_id=[AV_UID]&gdpr=[AV_GDPR]&gdpr_consent=[AV_CONSENT]&us_privacy=[AV_CCPA]",
+        "e": "sync",
+        "pr": "24",
+        "t": 1
+    },
+    {
+        "url": "https://x.bidswitch.net/check_uuid/https%3A%2F%2Fsync.aniview.com%2Fcookiesyncendpoint%3Fauid%3D[AV_UID]%26biddername%3D24%26pid%3D62f53b2c7850d0786f227f64%26key%3D%24%7BBSW_UUID%7D?gdpr=[AV_GDPR]&gdpr_consent=[AV_CONSENT]&us_privacy=[AV_CCPA]",
+        "e": "sync",
+        "pr": "24",
+        "t": 1
+    },
+    {
+        "url": "https://bttrack.com/pixel/cookiesyncredir?rurl=https%3A%2F%2Fsync.aniview.com%2Fcookiesyncendpoint%3Fauid%3D[AV_UID]%26biddername%3D204%26pid%3D[AV_PUBLISHERID]%26key%3D%7Bglobalid%7D",
+        "e": "sync",
+        "pr": "204",
+        "t": 1
+    },
+    {
+        "url": "https://ap.lijit.com/pixel?us_privacy=[AV_CCPA]&gdpr=[AV_GDPR]&gdpr_consent=[AV_CONSENT]&redir=https%3A%2F%2Fsync.aniview.com%2Fcookiesyncendpoint%3Fauid%3D[AV_UID]%26biddername%3D18%26key%3D%24UID",
+        "e": "sync",
+        "pr": "18",
+        "t": 1
+    }
+];
+    var syncTimeout = 1000 * 60 * 60 * 4; //4 hours
+    function getParams() {
+      var params = {};
+      var search = location.search.replace("?", "");
+      search.split("&").forEach(function (keyVal) {
+        var param = keyVal.split("=");
+        if (param.length == 2) {
+          params[param[0]] = param[1];
+        }
+      });
+
+      return params;
+    }
+
+    function canStore() {
+      try {
+        var testKey = "av_testStorage";
+        localStorage.setItem(testKey, "test");
+        localStorage.removeItem(testKey);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    var configKey = "av_sd_"
+
+    function getConfig(pid) {
+      try {
+        var key = configKey + pid;
+        var configStr = localStorage.getItem(key);
+        return JSON.parse(configStr) || {};
+        return true;
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveConfig(config, pid) {
+      try {
+        var key = configKey + pid;
+        var configStr = JSON.stringify(config);
+        localStorage.setItem(key, configStr);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    var aniCRegex = new RegExp('(^| )' + 'aniC' + '=([^;]+)');
+
+    function getAvUid() {
+      var match = document.cookie.match(aniCRegex);
+      if (match)
+        return match[2];
+      return "";
+    }
+
+    var syncCalled = false;
+
+    function syncPixels() {
+      if (syncCalled)
+        return;
+      syncCalled = true;
+	  var params = getParams() || {};
+	  var gdpr = params.gdpr || "";
+	  var consent = params.consent || params.gdpr_consent || "";
+	  var gpp = params.gpp || "";
+	  var ccpa = params.ccpa || params.us_privacy || "";
+	  var pid = params.pid || "";
+      syncs.forEach(function (sync) {
+        if (sync && sync.url) {
+          var url = sync.url.replace("[AV_UID]", getAvUid());
+		  url = url.replace("[AV_PUBLISHERID]", pid);
+		  url = url.replace("[AV_GDPR]", gdpr);
+		  url = url.replace("[AV_CONSENT]", consent);
+		  url = url.replace("[AV_CCPA]", ccpa);
+		  url = url.replace("[AV_GPP]", gpp);
+          if (sync.t == 1) {
+            (new Image).src = url;
+          } else {
+            var elType = sync.t == 2 ? "script" : "iframe";
+            var el = document.createElement(elType);
+            el.style.display = "none";
+            el.src = url;
+            document.body.appendChild(el);
+          }
+        }
+      })
+    }
+
+    function syncSupply() {
+      var img = document.createElement("img");
+      img.src = "https://sync.aniview.com/ssync" + location.search;
+      img.onload = syncPixels;
+      document.body.appendChild(img);
+      setTimeout(syncPixels, 500);
+    }
+
+    function start() {
+      var params = getParams();
+      var syncMap = [];
+      if (!params.pid || !params.r || params.r.indexOf("https") != 0) {
+        return;
+      }
+
+      var sync = false;
+      if (canStore()) {
+        var config = getConfig(params.pid);
+        config.lastSync = config.lastSync || 0
+        if (Date.now() - config.lastSync > syncTimeout) {
+          sync = true;
+        }
+      } else {
+        if (Math.random() <= 0.1) {
+          sync = true;
+        }
+      }
+
+      if (sync) {
+        saveConfig({lastSync: Date.now()}, params.pid);
+        syncSupply();
+      }
+    }
+
+    start();
+  })(window);
+
+</script>
+
+
+</body></html>

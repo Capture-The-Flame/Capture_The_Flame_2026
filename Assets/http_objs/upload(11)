@@ -1,0 +1,1 @@
+{"entries":[{"failure_data":{"custom_error":"net::ERR_ABORTED"},"http_response_code":200,"network_changed":false,"protocol":"SPDY","request_age_ms":60313,"request_elapsed_ms":163,"sample_rate":1.0,"server_ip":"","status":"aborted","url":"https://beacons.gvt2.com/","was_proxied":false}],"reporter":"chrome"}

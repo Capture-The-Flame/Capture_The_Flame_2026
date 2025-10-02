@@ -1,0 +1,28 @@
+this._s=this._s||{};(function(_){var window=this;
+try{
+_.r("nqQ5fe");
+
+_.u();
+}catch(e){_._DumpException(e)}
+try{
+_.OE=_.x("dp6JMc",[_.Go,_.a_a]);
+}catch(e){_._DumpException(e)}
+try{
+_.r("dp6JMc");
+var sPd;_.rPd=function(a,b,c){const d=new _.Ly(_.Jy(()=>{_.Ky(d,a);c()}),{threshold:b});d.observe(a);return{Oi:d,target:a}};sPd=class extends _.m{constructor(a){super(a)}getId(){return _.kd(this,1)}kd(a){return _.lh(this,1,a)}Bf(){return _.vi(this,1)}getType(){return _.Ai(this,2)}setType(a){return _.Ig(this,2,a)}Ne(){return _.Gj(this,2)}Ke(){return _.Ng(this,2)}};var tPd=new _.Qg("ff8SWb",class extends _.m{constructor(a){super(a)}},sPd,[_.xq,!1,_.yq,"/PromoThrottlerService.RecordPromoState"]);var uPd,vPd,wPd;uPd=function(a,b,c=null){a=_.Mf(new _.Rn({path:"/fp_204",vx:!0})).Fc("client","throttler").Fc("ptid",b).Fc("ptt",a).Fc("authuser",String(_.Vc(_.Sc("QrtxK"),0)));c&&a.Fc("ptvid",c);a.log()};vPd=async function(a,b){try{if(a.Aa!==0){var c=(new sPd).kd(a.Aa).setType(b);a.Ba&&_.Of(c,3,a.Ba);try{_.y(await _.y(a.Jd.Ec(tPd.getInstance(c))))}catch(d){_.y(),_.Pd(d),uPd(String(b),String(a.Aa),a.Ba)}}}finally{_.y()}};
+wPd=async function(a,b){try{let e=0;switch(b){case 1:e=1;break;case 3:e=2;break;case 2:e=3;break;case 9:e=6;break;case 8:e=5;break;case 10:e=8}var c=_.dPd(_.oPd(_.cPd(new _.fPd,Number(a.Ja)||a.Aa)),e);var d=_.lh(c,7,Number(a.bSa)||0);_.y(await _.y(a.Yga.SWa(d)))}finally{_.y()}};
+_.PE=class extends _.Tr{static Sa(){return{service:{Ce:_.qr,Yga:_.qPd}}}constructor(a){super(a.Oa);this.oa=null;this.Jd=a.service.Ce;this.Yga=a.service.Yga;this.Aa=_.xl(this.getData("promoId"));this.Ja=_.ul(this.getData("placementId"),"");this.Ba=_.ul(this.getData("pvid"),"")||null;this.bSa=_.ul(this.getData("experimentId"),"");if(this.getData("ai").Lb())if(this.getData("aie").Lb()){a=_.cmb(_.tl(this.getData("aie")));const b=_.Vc(this.getData("ait"),100)/100;this.oa=_.rPd(a,b,()=>{this.oa=null;this.recordImpression()})}else this.recordImpression()}Tb(){this.oa&&
+(_.Ky(this.oa.Oi,this.oa.target),this.oa=null)}recordDismissal(){return this.Mjb(2)}Da(){return this.Mjb(9)}recordImpression(){return this.Mjb(1)}recordAccept(){return this.Mjb(3)}Ca(){return this.Mjb(8)}Ea(){return this.Mjb(10)}async Mjb(a){try{_.y(await _.y(Promise.all([vPd(this,a),wPd(this,a)])))}finally{_.y()}}};_.PE.prototype.$wa$GPUwid=function(){return this.Ea};_.PE.prototype.$wa$MpFh0d=function(){return this.Ca};_.PE.prototype.$wa$y73ESe=function(){return this.recordAccept};
+_.PE.prototype.$wa$CAcXzc=function(){return this.recordImpression};_.PE.prototype.$wa$DdMHLd=function(){return this.Da};_.PE.prototype.$wa$uZ0Xpb=function(){return this.recordDismissal};_.PE.prototype.$wa$k4Iseb=function(){return this.Tb};_.Vr(_.OE,_.PE);
+_.u();
+}catch(e){_._DumpException(e)}
+try{
+_.mHp=_.x("BzlSce",[_.TGp]);
+}catch(e){_._DumpException(e)}
+try{
+_.r("BzlSce");
+var nHp=class extends _.m{constructor(a){super(a)}};nHp.prototype.ob="GBhlFe";_.Vr(_.mHp,class extends _.Tr{static Sa(){return{model:{jwa:_.UGp},jsdata:{Dsb:nHp}}}constructor(a){super(a.Oa);const b=a.model.jwa;a=_.p(a.jsdata.Dsb,_.SGp,1);b.Dsb.value={wq:a};a=this.Ya("pSHapd");a.isEmpty()||b.VZ(a.kb())}});
+_.u();
+}catch(e){_._DumpException(e)}
+})(this._s);
+// Google Inc.

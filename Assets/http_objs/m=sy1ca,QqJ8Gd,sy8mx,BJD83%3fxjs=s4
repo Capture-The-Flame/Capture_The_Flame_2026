@@ -1,0 +1,23 @@
+this._s=this._s||{};(function(_){var window=this;
+try{
+_.zz=_.x("QqJ8Gd",[_.cr,_.fo]);
+}catch(e){_._DumpException(e)}
+try{
+_.r("QqJ8Gd");
+var FJc;
+_.GJc=function(a,b,c=!1,d,e){d=d||a.oa;if(!_.EJc(a,d))return!1;let f,g;try{g=c?_.jw(a.Ca,d):null;f=d.createElement("textarea");f.value=b;f.setAttribute("readonly","");_.vm(f,"height",0);d.body.appendChild(f);if(a.Da)f.select();else{const h=d.createRange();h.selectNodeContents(f);a.Aa.getSelection().removeAllRanges();a.Aa.getSelection().addRange(h);f.setSelectionRange(0,b.length)}d.addEventListener("copy",h=>{h.clipboardData.setData("text/plain",b);e&&h.clipboardData.setData(e,b);h.preventDefault()},{once:!0,
+capture:!0});return FJc(a,d)}finally{f&&_.im(f),g&&_.iw(g)}};FJc=function(a,b){b=b||a.oa;try{return _.EJc(a,b)?b.execCommand("copy"):!1}catch(c){return!1}};_.EJc=function(a,b){b=b||a.oa;b=b.queryCommandSupported("copy");!b&&a.Ba&&(a.Ba=!0);return b};
+_.Az=class extends _.ho{static Sa(){return{service:{focus:_.ow,window:_.io}}}constructor(a){super();this.Vl=null;this.oa=a.service.window.getDocument();this.Aa=a.service.window.get();this.Ca=a.service.focus;this.Da=!_.sa()&&!_.Fd.YLa();this.Ba=!1}copy(a,b=!1,c,d){c=c||this.oa;return a?_.GJc(this,a,b,c,d):FJc(this,c)}};_.Re(_.zz,_.Az);
+_.u();
+}catch(e){_._DumpException(e)}
+try{
+_.yXB=_.x("BJD83",[_.Tv,_.zz,_.Wk]);
+}catch(e){_._DumpException(e)}
+try{
+_.r("BJD83");
+var FSF=class extends _.Tr{static Sa(){return{controller:{Eab:{jsname:"H5KWJb",ctor:_.Uv}},service:{clipboard:_.Az,Ub:_.Au}}}constructor(a){super(a.Oa);this.Wv=a.service.clipboard;this.Eab=a.controller.Eab;this.Ub=a.service.Ub;this.QCb=_.Xe(this.getRoot().el(),"suggestionText")}q7(a){a=a.rb.el();this.Wv.copy(this.QCb);_.Ap(this.Ub.oa(),a,3).log();this.Eab.show();a.focus()}oa(){const a=this.Ha("Csy1P").el();_.Al.remove(a,"L1nX4b");_.Gv([new _.Tn(a,"show")])}Aa(){const a=this.Ha("Csy1P").el();_.Al.add(a,
+"L1nX4b");_.Gv([new _.Tn(a,"hide")])}};FSF.prototype.$wa$Tx5Rb=function(){return this.Aa};FSF.prototype.$wa$WOQqYb=function(){return this.oa};FSF.prototype.$wa$JhErlb=function(){return this.q7};_.Vr(_.yXB,FSF);
+_.u();
+}catch(e){_._DumpException(e)}
+})(this._s);
+// Google Inc.
