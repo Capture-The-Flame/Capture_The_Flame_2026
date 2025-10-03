@@ -1,1 +1,0 @@
-{"entries":[{"http_response_code":200,"network_changed":false,"protocol":"SPDY","request_age_ms":60133,"request_elapsed_ms":98,"sample_rate":0.05,"server_ip":"[2607:f8b0:4009:802::200e]:443","status":"ok","url":"https://www.google-analytics.com/","was_proxied":false}],"reporter":"chrome"}

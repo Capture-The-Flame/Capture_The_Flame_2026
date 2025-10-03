@@ -1,1 +1,0 @@
-{"entries":[{"http_response_code":200,"network_changed":false,"protocol":"SPDY","request_age_ms":61072,"request_elapsed_ms":677,"sample_rate":0.05,"server_ip":"[2607:f8b0:4023:2c03::54]:443","status":"ok","url":"https://accounts.google.com/ListAccounts?gpsia=1&source=ChromiumBrowser&laf=b64bin&json=standard","was_proxied":false}],"reporter":"chrome"}
