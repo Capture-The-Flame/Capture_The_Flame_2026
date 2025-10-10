@@ -1,8 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 from Crypto.Cipher import AES
 
-OUT_PLAIN = "flag_plain.bmp"
-OUT_ENC   = "flag_ecb_encrypted.bmp"
+OUT_PLAIN = "plain_image.bmp"
+OUT_ENC   = "encrypted_image.bmp"
 KEY = b"THIS_IS_16_BYTES"
 
 # CRITICAL: Use dimensions where each PIXEL row aligns with blocks
