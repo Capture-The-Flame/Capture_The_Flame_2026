@@ -6,8 +6,7 @@ This repository serves as the full library of challenges created for UIC's Captu
 ## Events
 
 Challenges were made in the preparation for the following events:
-
-- **Hack-o-Ween** 🎃 => Halloween Capture the Flag
+- **Hack-O-Ween** 🎃 => [Hack-O-Ween](https://github.com/edmuri/Hack-O-Ween)
 - **Ignite the Flame** 💥 => Introductory Mini CTF
 - **Into the Flame** 🔍 => Reverse Engineering + Binary Exploit Focused CTF
 - **Byte the Flame** ❤️‍🔥 => Mini CTF Competition
@@ -40,7 +39,6 @@ A full composite list of the categories we created challenges for are as follows
 - Basil Tiongson
 - Claudia Varnas
 - Gauri Khanolkar
-- Raima Chowdhury
 - Rose Torres
 - Saja Bushara
 - Sammy Patel
