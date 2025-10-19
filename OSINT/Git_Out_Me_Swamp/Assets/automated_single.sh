@@ -1,3 +1,4 @@
+#!/bin/bash
 NUM_COMMITS=30
 NUM_REPEATS=1
 REPO="/mnt/c/Users/edmur/Desktop/Capture_the_Flame_2026/My_Challenges/The_Swamp"
