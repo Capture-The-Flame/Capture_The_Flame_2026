@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 NUM_COMMITS=200
 REPO="/mnt/c/Users/edmur/Desktop/Capture_the_Flame_2026/My_Challenges/The_Swamp"
 FILE="forbidden_scroll.txt"
