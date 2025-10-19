@@ -5,7 +5,6 @@ FILE="forbidden_scroll.txt"
 BRANCH="main"
 
 cd "$REPO" || { echo "Repo not found!"; exit 1; }
-
 for i in $(seq 1 $NUM_COMMITS); do
     echo " Commit $i of $NUM_COMMITS..."
 
