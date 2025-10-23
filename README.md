@@ -2,7 +2,6 @@
 
 This repository serves as the full library of challenges created for UIC's Capture the Flame challenge creation season.
 
-
 ## Events
 
 Challenges were made in the preparation for the following events:
