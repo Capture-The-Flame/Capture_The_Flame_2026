@@ -101,7 +101,7 @@ void displayMenu() {
 }
 
 int main() {
-    const string CORRECT_FLAG = "FLAG{Simple_Caesar_Shift}";
+    const string CORRECT_FLAG = "flame{Simple_Caesar_Shift}";
     int attempts = 0;
     bool solved = false;
     
@@ -129,7 +129,7 @@ int main() {
             case 3: {
                 cout << " SUBMIT YOUR FLAG\n";
                 cout << "─────────────────────────────────────────\n";
-                cout << "Enter the flag (format: FLAG{...}): ";
+                cout << "Enter the flag (format: flame{...}): ";
                 
                 string userFlag;
                 getline(cin, userFlag);
