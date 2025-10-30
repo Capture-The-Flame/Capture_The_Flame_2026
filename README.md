@@ -6,6 +6,7 @@ This repository serves as the full library of challenges created for UIC's Captu
 
 Challenges were made in the preparation for the following events:
 - **Hack-O-Ween** 🎃 => [Hack-O-Ween](https://github.com/edmuri/Hack-O-Ween)
+- **Find the LoveBug** => Valentine's Day CTF
 - **Ignite the Flame** 💥 => Introductory Mini CTF
 - **Into the Flame** 🔍 => Reverse Engineering + Binary Exploit Focused CTF
 - **Byte the Flame** ❤️‍🔥 => Mini CTF Competition
@@ -37,6 +38,7 @@ A full composite list of the categories we created challenges for are as follows
 - Ammani Khan
 - Basil Tiongson
 - Claudia Varnas
+- Edoardo Gennaretti
 - Gauri Khanolkar
 - Rose Torres
 - Saja Bushara
