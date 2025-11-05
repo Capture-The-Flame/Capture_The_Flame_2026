@@ -86,7 +86,7 @@ button.addEventListener('click', async () => {{
                     addMessage(data['messages'][0]['sent'],"user");
                     addMessage(data['messages'][1]['recieved'], "gnome");
 
-                    const audioBytes = atob(data['audio'][2]['audio']);
+                    const audioBytes = atob(data['messages'][2]['audio']);
                     const audioArray = new Uint8Array(audioBytes.length);
                     for (let i = 0; i < audioBytes.length; i++) {{
                         audioArray[i] = audioBytes.charCodeAt(i);

@@ -15,7 +15,7 @@ def generate_page():
         {style.get_page_style()}
     </head>
     <body>
-        <img class="backdrop" src="{path}static/temp_gnome_background.jpg"></img>
+        <img class="backdrop" src="{path}static/gnome_backdrop.webp"></img>
         <div>
             {generate_chat_box()}
         </div>
