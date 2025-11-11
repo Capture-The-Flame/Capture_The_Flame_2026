@@ -36,6 +36,7 @@ A full composite list of the categories we created challenges for are as follows
 - **Fatima Mora** - Event Director
 - Aleena Mehmood
 - Ammani Khan
+- Anirudh Yallapragada
 - Basil Tiongson
 - Claudia Varnas
 - Edoardo Gennaretti
@@ -50,7 +51,6 @@ A full composite list of the categories we created challenges for are as follows
 
 - Anar Enkhzol
 - Derick Johnson
-- Gwendolyn Vongkasemsiri
 - Lily Gross
 - Oak Atsume
 
