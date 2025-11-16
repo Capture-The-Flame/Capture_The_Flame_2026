@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medieval Cryptography Challenge</title>
+  <style>
+    body {
+      background: #d7c4a3;
+      font-family: 'Garamond', serif;
+      padding: 40px;
+      color: #2a1a0a;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: rgba(255, 245, 230, 0.9);
+      padding: 30px;
+      border: 4px solid #5c3a1e;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px #d6c29d;
+    }
+    .encrypted-box {
+      background: #fffaf1;
+      padding: 20px;
+      border: 2px solid #5c3a1e;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      white-space: pre-wrap;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 1.1rem;
+      border: 2px solid #5c3a1e;
+      border-radius: 6px;
+      background: #fff9ef;
+    }
+    button {
+      margin-top: 18px;
+      width: 100%;
+      padding: 12px;
+      font-size: 1.2rem;
+      background: #5c3a1e;
+      color: #f5e6c8;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    button:hover {
+      background: #744d27;
+    }
+    #flag {
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 1.3rem;
+      border: 2px solid #3f2a15;
+      background: #fff7e6;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛡️ Medieval Cryptography Trial 🗡️</h1>
+
+    <p>Brave traveler, a secret message lies before you — shrouded first by a <strong>Caesar Cipher</strong>, and then sealed with the mystical <strong>Vigenère Cipher</strong>. Only when you unveil its true form shall the hidden flag reveal itself.</p>
+
+    <h2>Encrypted Scroll:</h2>
+    <div class="encrypted-box" id="encryptedText">Ukimy, rgr ybdbcs cgptgmqq zl urc cbuo jc “mort pfcylr ybdbcs quls, zjdnyb pzcm” Hyb urgr cgptgmqq zl pzcm gnb eymq jnbo imt tkq urcqr.</div>
+
+    <label for="answer"><strong>Enter the fully decrypted message:</strong></label>
+    <input id="answer" type="text" placeholder="Type your deciphered message here..." />
+    <button onclick="checkAnswer()">Submit</button>
+
+    <div id="flag">🏰 <strong>Correct!</strong> The sacred flag is:<br><br><code>flames{doubly_troubled}</code></div>
+  </div>
+
+  <script>
+    const correctAnswer = "Hello, the secret password to the door is “open sesame secret door, please open” Use this password to open the door when you get there.".toLowerCase();
+
+    function checkAnswer() {
+      const user = document.getElementById("answer").value.trim().toLowerCase();
+      if (user === correctAnswer) {
+        document.getElementById("flag").style.display = "block";
+      } else {
+        alert("The runes do not align. Your answer is incorrect.");
+      }
+    }
+    // Attempt to hinder inspection (not foolproof)
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  document.onkeydown = function(e) {
+    if (e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+        (e.ctrlKey && e.key === 'U')) {
+      return false;
+    }
+  };
+  </script>
+</body>
+</html>
