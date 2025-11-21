@@ -1,1 +1,0 @@
-# Capture The Flame: Cryptography Challenges

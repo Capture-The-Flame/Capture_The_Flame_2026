@@ -1,6 +1,0 @@
-# Dockerfile.victim
-FROM python:3.11-slim
-WORKDIR /app
-COPY flag_server.py /app/flag_server.py
-CMD ["python3", "/app/flag_server.py"]
-
