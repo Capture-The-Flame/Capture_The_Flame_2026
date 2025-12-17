@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hamlet</title>
+</head>
+<body>
+  <h2>“Tis in my memory lock'd, And you yourself shall keep the key of it.”</h2>
+  <p>The vault remembers.</p>
+
+<script>
+const keeper = (() => {
+  const k = "toBeOrNotToBe";
+  return {
+    role: "Ophelia",
+    recall: () => k
+  };
+})();
+
+
+const fragments = [
+  102,108,97,109,101,123,109,101,116,104,
+  105,110,107,115,95,116,104,111,117,95,
+  115,104,97,108,116,95,107,101,101,112,
+  95,116,104,101,95,107,101,121,125
+];
+
+function assemble(arr) {
+  return arr.map(c => String.fromCharCode(c)).join("");
+}
+
+const FLAG = assemble(fragments);
+
+function xorEncrypt(text, key) {
+  return btoa([...text].map((c,i)=>
+    String.fromCharCode(
+      c.charCodeAt(0) ^ key.charCodeAt(i % key.length)
+    )
+  ).join(""));
+}
+
+const cipher = xorEncrypt(FLAG, keeper.recall());
+
+window.vault = {
+  memory: cipher,
+  hint: "Locked, yet remembered."
+};
+
+setInterval(()=>{},1000);
+
+
+setInterval(()=>{},1000);
+</script>
+</body>
+</html>
