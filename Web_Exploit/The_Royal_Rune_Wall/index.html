@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Content Security Policy CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data:;
+    ">
+
+  <title>The Royal Rune Wall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="hall">
+
+    <header>
+      <h1>📜 The Royal Rune Wall</h1>
+      <p class="subtitle">
+        Deep within the stone halls of the kingdom lies a wall that listens.
+      </p>
+    </header>
+
+    <section class="altar">
+      <p class="lore">
+        The kingdom forbids spoken spells.  
+        <br>
+        Only silent runes may be engraved upon the stone.
+      </p>
+
+      <div class="engrave-box">
+        <input id="runeInput" placeholder="Engrave your rune..." />
+        <button onclick="engraveRune()">🪨 Engrave Rune</button>
+      </div>
+    </section>
+
+    <section class="wall">
+      <h2>🪨 Engraved Runes</h2>
+      <div id="runeWall"></div>
+    </section>
+
+    <section id="flag" class="flag"></section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
