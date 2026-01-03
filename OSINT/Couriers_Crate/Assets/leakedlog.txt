@@ -1,0 +1,51 @@
+[01:12:08] Archmage Lysander:
+The veil thins tonight.
+We need a real place on Earth where the ley-lines cross.
+No myths. No riddles. A verified location.
+
+[01:12:18] Sir Caelan:
+Then speak plain: how do we find it?
+
+[01:12:26] Bran the Scribe:
+In this age, guilds keep public ledgers.
+If we learn a guild’s name, we can learn where they stand—street and number.
+
+[01:12:41] Rowan:
+I followed the courier who brought the false map.
+He wasn’t one of ours.
+He served a modern guild selling “precise coordinates.”
+
+[01:12:58] Rowan:
+I saw three names on crates in the depot—different routes, different seals.
+Could be misdirection.
+
+[01:13:07] Rowan:
+Lead 1: "Caledon Chartworks Ltd" marked for Scotland.
+Lead 2: "Roma Arcana Geodesy" marked for Italy.
+Lead 3: "Meridian Iceworks Consortium" marked for Antarctica.
+
+[01:13:22] Sister Mirelle:
+Names are ash unless one is real.
+Which crate did the courier actually carry?
+
+[01:13:36] Sir Caelan:
+Rowan. Enough smoke. Which name was on his crate?
+
+[01:13:49] Rowan:
+The courier’s crate had a different stamp than the depot stock.
+Clean print. Official.
+No wax. No rune—just modern ink.
+
+[01:14:03] Rowan:
+Courier crate read: "SvalSat (Svalbard Satellite Station) / KSAT".
+Shipping region: Svalbard (Polar).
+
+[01:14:17] Archmage Lysander:
+Good.
+Ignore the other names.
+We only need the real-world street address of that guild hall.
+
+[01:14:27] Bran the Scribe:
+Be exact and write it plainly, as it appears in the ledger.
+Street number, street name, and city/settlement.
+No “near” or “around”—only the precise address.
