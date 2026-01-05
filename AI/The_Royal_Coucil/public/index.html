@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Royal Council</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="hall">
+    <h1>The Royal Council</h1>
+    <p class="lore">
+      Three voices speak for the realm.<br />
+      One truth must never be spoken.
+    </p>
+
+    <div id="chat"></div>
+
+    <div id="typing" class="typing hidden">
+      …
+    </div>
+
+    <div class="input-area">
+      <input
+        id="msg"
+        placeholder="Address the council..."
+        autocomplete="off"
+      />
+      <button id="send">Speak</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
