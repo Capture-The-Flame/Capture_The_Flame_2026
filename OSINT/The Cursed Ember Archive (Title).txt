@@ -1,0 +1,20 @@
+The Cursed Ember Archive
+
+
+
+Description: 
+Long before the dragon revealed itself, warnings were whispered across the realms by an informant known only as Northflame.
+
+These warnings were gathered into the Ember Archive — a cursed collection of scrolls where messages repeat, contradict, and drown the truth in smoke.
+
+The archivists failed to determine where Northflame truly was when the dragon awakened.
+
+You are adventurers on a quest for flame and glory.
+Your task is to cut through the noise and uncover the truth.
+
+Determine the realm and kingdom where Northflame witnessed the dragon’s awakening on the 14th Day of the Ember Moon.
+
+The archive is vast and misleading.
+Perhaps a thinking flame can burn away what does not matter.
+
+Flag format: flag{realm_kingdom_date}
