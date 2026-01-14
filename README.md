@@ -56,7 +56,6 @@ Gauri Khanolkar
 Rose Torres  
 Saja Bushara  
 Sammy Patel  
-Sufiyan Shariff  
 Teresa Chirayil  
 
 ### Experience++
