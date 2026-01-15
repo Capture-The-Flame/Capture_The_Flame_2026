@@ -1,0 +1,98 @@
+html, body, #root {
+height: 100%;
+margin: 0;
+overflow: hidden;
+}
+
+
+body {
+background-color: #020617;
+}
+
+
+.page {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+color: #4ade80;
+font-family: monospace;
+}
+
+
+.header {
+border-bottom: 1px solid #15803d;
+padding: 1.5rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+
+.title {
+font-size: 1.25rem;
+letter-spacing: 0.15em;
+}
+.status {
+font-size: 0.8rem;
+opacity: 0.8;
+}
+
+
+.main {
+flex: 1;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1.5rem;
+padding: 1.5rem;
+}
+
+
+.card {
+border: 1px solid #15803d;
+border-radius: 16px;
+padding: 1.5rem;
+background: rgba(0, 0, 0, 0.35);
+}
+
+
+.card-wide {
+grid-column: span 2;
+}
+
+
+@media (max-width: 768px) {
+.card-wide {
+grid-column: span 1;
+}
+}
+.terminal {
+margin-top: 1rem;
+background: rgba(0, 0, 0, 0.6);
+padding: 1rem;
+font-size: 0.85rem;
+}
+
+
+.links li {
+cursor: pointer;
+}
+
+
+.links li:hover {
+color: #86efac;
+}
+
+
+.warning {
+border-color: #b91c1c;
+color: #f87171;
+}
+
+
+.footer {
+border-top: 1px solid #15803d;
+padding: 1rem;
+text-align: center;
+font-size: 0.75rem;
+opacity: 0.7;
+}
