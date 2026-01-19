@@ -1,0 +1,17 @@
+192.168.4.12 - trader1 [01/Jan/1547:08:02:11] "GET /stall/buy HTTP/1.1" 200 312 "coin=a3c91f"
+192.168.4.18 - trader2 [01/Jan/1547:08:05:47] "GET /stall/buy HTTP/1.1" 200 298 "coin=b71d2e"
+192.168.4.22 - trader3 [01/Jan/1547:08:09:03] "GET /stall/buy HTTP/1.1" 200 305 "coin=9c44aa"
+
+192.168.4.12 - trader1 [01/Jan/1547:08:15:26] "GET /stall/buy HTTP/1.1" 200 310 "coin=ff82b0"
+192.168.4.19 - trader4 [01/Jan/1547:08:18:54] "GET /stall/buy HTTP/1.1" 200 299 "coin=1e7d4c"
+
+192.168.4.31 - trader5 [01/Jan/1547:08:22:41] "GET /stall/buy HTTP/1.1" 200 301 "coin=8f3a92"
+192.168.4.31 - trader5 [01/Jan/1547:08:27:09] "GET /stall/buy HTTP/1.1" 200 304 "coin=8f3a92"
+
+192.168.4.18 - trader2 [01/Jan/1547:08:30:55] "GET /stall/buy HTTP/1.1" 200 297 "coin=6d2fa9"
+192.168.4.25 - trader6 [01/Jan/1547:08:34:12] "GET /stall/buy HTTP/1.1" 200 300 "coin=bb91e4"
+
+192.168.4.31 - trader5 [01/Jan/1547:08:39:48] "GET /stall/locked HTTP/1.1" 200 421 "coin=8f3a92"
+
+192.168.4.27 - trader7 [01/Jan/1547:08:42:01] "GET /stall/buy HTTP/1.1" 200 295 "coin=0ac3de"
+192.168.4.22 - trader3 [01/Jan/1547:08:45:36] "GET /stall/buy HTTP/1.1" 200 302 "coin=74e1c8"
