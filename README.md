@@ -6,10 +6,10 @@ This repository serves as the full library of challenges created for UIC's Captu
 
 Challenges were made in the preparation for the following events:  
 [**Hack-O-Ween**](https://github.com/edmuri/Hack-O-Ween)  🎃  
-**Caught the LoveBug** 🩷   
-**Ignite the Flame** 💥  
-**Into the Flame** 🔍  
-**Byte the Flame** ❤️‍🔥  
+[**Caught the LoveBug**]() 🩷   
+[**Ignite the Flame**](https://github.com/Capture-The-Flame/Ignite_The_Flame_2026)💥  
+[**Into the Flame**]() 🔍  
+[**Byte the Flame**]() ❤️‍🔥  
 **Capture the Flame** 🔥  
 
 
