@@ -1,6 +1,15 @@
-# Capture The Flame 2026 🔥
+<pre align="center">
+  ____            _                    _   _           
+ / ___|__ _ _ __ | |_ _   _ _ __ ___  | |_| |__   ___  
+| |   / _` | '_ \| __| | | | '__/ _ \ | __| '_ \ / _ \ 
+| |__| (_| | |_) | |_| |_| | | |  __/ | |_| | | |  __/ 
+ \____\__,_| .__/ \__|\__,_|_|  \___|  \__|_|_|_|\___| 
+|  ___| | _|_| _ __ ___   ___  |___ \ / _ \___ \ / /_  
+| |_  | |/ _` | '_ ` _ \ / _ \   __) | | | |__) | '_ \ 
+|  _| | | (_| | | | | | |  __/  / __/| |_| / __/| (_) |
+|_|   |_|\__,_|_| |_| |_|\___| |_____|\___/_____|\___/ 
+</pre>
 
-This repository serves as the full library of challenges created for UIC's Capture the Flame challenge creation season for the 2026 iteration of the competition. 
 
 ## Events
 
@@ -56,7 +65,7 @@ Gauri Khanolkar
 Rose Torres  
 Saja Bushara  
 Sammy Patel  
-Sufiyan Shariff
+Sufiyan Shariff  
 Teresa Chirayil  
 
 ### Experience++
