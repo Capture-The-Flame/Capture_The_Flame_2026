@@ -10,6 +10,7 @@
 |_|   |_|\__,_|_| |_| |_|\___| |_____|\___/_____|\___/ 
 </pre>
 
+**Welcome** to the challenge library of the **Capture the Flame 2026** competition. With a major emphasis on accessibility and education for cyber security concepts these challenges were made diligently by our team to ensure a fun and educational experience for the competitors! 
 
 ## Events
 
