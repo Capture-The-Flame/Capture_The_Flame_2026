@@ -1,1 +1,10 @@
 .DS_Store
+
+# Node
+node_modules/
+**/node_modules/
+
+# Vite / frontend junk
+.vite/
+dist/
+build/
