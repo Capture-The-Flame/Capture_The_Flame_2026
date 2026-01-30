@@ -16,7 +16,7 @@
 
 Challenges were made in the preparation for the following events:  
 [**Hack-O-Ween**](https://github.com/edmuri/Hack-O-Ween)  🎃  
-[**Caught the LoveBug**](https://github.com/Capture-The-Flame/Lovebug2026) 🩷   
+[**Caught the LoveBug**]() 🩷   
 [**Ignite the Flame**](https://github.com/Capture-The-Flame/Ignite_The_Flame_2026)💥  
 [**Into the Flame**]() 🔍  
 [**Byte the Flame**]() ❤️‍🔥  
