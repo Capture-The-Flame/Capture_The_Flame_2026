@@ -53,29 +53,97 @@ The repo has the following structure
 
 ### Experience Team
 
-**Eduardo Murillo** - Team Lead  
-**Coda Richmond** - Event Director  
-**Fatima Mora** - Event Director  
-Aleena Mehmood  
-Ammani Khan  
-Anirudh Yallapragada  
-Basil Tiongson  
-Claudia Varnas  
-Edoardo Gennaretti  
-Gauri Khanolkar  
-Rose Torres  
-Saja Bushara  
-Sammy Patel  
-Sufiyan Shariff  
-Teresa Chirayil  
+<details>
+  <summary><b>Eduardo Murillo</b> – Team Lead</summary>
+  <br>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/eduardo-murillo1" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/edmuri" style="text-decoration: none;">
+    Here
+  </a>
+    <br>
+</details>
+
+<details>
+  <summary><strong>Coda Richmond</strong> – Event Director</summary>
+</details>
+
+<details>
+  <summary>Fatima Mora – Event Director</summary>
+</details>
+
+<details>
+  <summary>Aleena Mehmood</summary>
+</details>
+
+<details>
+  <summary>Ammani Khan</summary>
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/ammanikhan" style="color: inherit; text-decoration: none;">
+    www.linkedin.com/in/ammanikhan
+  </a>
+    <br>
+    
+</details>
+
+<details>
+  <summary>Anirudh Yallapragada</summary>
+</details>
+
+<details>
+  <summary>Basil Tiongson</summary>
+</details>
+
+<details>
+  <summary>Claudia Varnas</summary>
+  <a href="https://github.com/cl-py" style="color: inherit; text-decoration: none;">
+    github.com/cl-py
+  </a>
+</details>
+
+<details>
+  <summary>Edoardo Gennaretti</summary>
+</details>
+
+<details>
+  <summary>Gauri Khanolkar</summary>
+</details>
+
+<details>
+  <summary>Rose Torres</summary>
+</details>
+
+<details>
+  <summary>Saja Bushara</summary>
+</details>
+
+<details>
+  <summary>Sammy Patel</summary>
+</details>
+
+<details>
+  <summary>Sufiyan Shariff</summary>
+</details>
+
+<details>
+  <summary>Teresa Chirayil</summary>
+</details>
+  
 
 ### Experience++
 
-Anar Enkhzol  
-Derick Johnson  
-Gwendolyn Vongkasemsiri  
-Lily Gross  
-Nefeli Georgilas  
+[Anar Enkhzol](https://github.com/Aukovien)  
+[Derick Johnson](https://www.linkedin.com/in/derick-m-johnson/)  
+[Gwendolyn Vongkasemsiri]()  
+[Lily Gross](https://github.com/AppalachianMounta1n)  
+[Nefeli Georgilas]()  
 
 
 
