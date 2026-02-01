@@ -55,8 +55,6 @@ The repo has the following structure
 
 <details>
   <summary><b>Eduardo Murillo</b> – Team Lead</summary>
-  <br>
-
   &nbsp;&nbsp;&nbsp;&nbsp;
   LinkedIn: 
   <a href="https://www.linkedin.com/in/eduardo-murillo1" style=" text-decoration: none;">
@@ -67,83 +65,241 @@ The repo has the following structure
   <a href="https://github.com/edmuri" style="text-decoration: none;">
     Here
   </a>
-    <br>
 </details>
 
 <details>
   <summary><strong>Coda Richmond</strong> – Event Director</summary>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/coda-richmond/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/thecoda666" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Fatima Mora – Event Director</summary>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/fatima-mora-garcia/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/fmora22" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Aleena Mehmood</summary>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/aleena-mehmood/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/amehm" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Ammani Khan</summary>
-  <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.linkedin.com/in/ammanikhan" style="color: inherit; text-decoration: none;">
-    www.linkedin.com/in/ammanikhan
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/ammanikhan" style=" text-decoration: none;">
+    Here
   </a>
-    <br>
-    
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/ammanikhan" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Anirudh Yallapragada</summary>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/ayswe/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/anirudh-56" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Basil Tiongson</summary>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/basiltiongson/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/basiltiongson0" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Claudia Varnas</summary>
-  <a href="https://github.com/cl-py" style="color: inherit; text-decoration: none;">
-    github.com/cl-py
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/claudia-varnas-84abb42b2/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/cl-py" style="text-decoration: none;">
+    Here
   </a>
 </details>
 
 <details>
   <summary>Edoardo Gennaretti</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/edoardogennaretti/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/edogenna" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Gauri Khanolkar</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/gauri-khanolkar/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/Gauri-Khanolkar1" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Rose Torres</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/roselyn-torres/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/roselyn818" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Saja Bushara</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/sajabushara/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/supernova37452" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Sammy Patel</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/saumilpatel06//" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/sammypatel06" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Sufiyan Shariff</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/sufiyan-shariff-22354021a/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/cluelessdesi" style="text-decoration: none;">
+    Here
+  </a>
 </details>
 
 <details>
   <summary>Teresa Chirayil</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/teresachirayil/" style=" text-decoration: none;">
+    Here
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/TeresaChirayil" style="text-decoration: none;">
+    Here
+  </a>
 </details>
   
 
 ### Experience++
 
-[Anar Enkhzol](https://github.com/Aukovien)  
-[Derick Johnson](https://www.linkedin.com/in/derick-m-johnson/)  
-[Gwendolyn Vongkasemsiri]()  
-[Lily Gross](https://github.com/AppalachianMounta1n)  
-[Nefeli Georgilas]()  
+<details>
+  <summary>Anar Enkhzol</summary>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/Aukovein" style="text-decoration: none;">
+    Here
+  </a>
+</details>
+
+<details>
+  <summary>Derick Johnson</summary>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  LinkedIn: 
+  <a href="https://www.linkedin.com/in/derick-m-johnson/" style=" text-decoration: none;">
+    Here
+  </a>
+</details>
+
+<details>
+  <summary>Gwendolyn Vongkasemsiri</summary>
+</details>
+
+<details>
+  <summary>Lily Gross</summary>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  Github:
+  <a href="https://github.com/AppalachianMounta1n" style="text-decoration: none;">
+    Here
+  </a>
+</details>
+
+<details>
+  <summary>Nefeli Georgilas</summary>
+</details>
 
 
 
