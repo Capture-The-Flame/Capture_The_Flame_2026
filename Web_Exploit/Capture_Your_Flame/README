@@ -1,0 +1,14 @@
+Setup Instructions
+--------------------
+
+Prerequisites:
+- Python 3.9 or higher
+- pip
+
+Installation:
+1. Clone the repository
+2. Install dependencies pip3 install -r requirements.txt
+3. Verify the .env file exists! (contains the CTF flag)
+4. Run the application python3 app.py
+5. Open browser to http://localhost:5000
+
