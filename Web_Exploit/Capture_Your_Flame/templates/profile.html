@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Admirer's Profile - Capture Your Flame</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .profile-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+        
+        .profile-header h1 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .profile-info {
+            margin-bottom: 30px;
+        }
+        
+        .profile-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .profile-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .interest-tag {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .message-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+        
+        .message-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        #messageBox {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        #messageBox:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+        
+        .btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        #messages {
+            margin-top: 30px;
+        }
+        
+        .message {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            background: white;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- this is what students are trying to steal -->
+    <script>
+        localStorage.setItem('realProfile', JSON.stringify({
+            username: 'SecretAdmirer',
+            realName: 'Damien Holton',
+            email: 'damienH@gmail.com',
+            studentID: '39203232'
+        }));
+        
+        document.cookie = "realName=Damien_Holton; path=/";
+        document.cookie = "email=damienH@gmail.com; path=/";
+    </script>
+
+    <div class="container">
+        <a href="/" class="back-link">← Back to Home</a>
+        
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-pic">❓</div>
+                <h1>{{ username }}</h1>
+                <p style="color: #999;">Identity Hidden</p>
+            </div>
+            
+            <div class="profile-info">
+                <h3>📝 About Me</h3>
+                <p>{{ bio }}</p>
+            </div>
+            
+            <div class="profile-info">
+                <h3>💖 Interests</h3>
+                <div class="interests">
+                    {% for interest in interests %}
+                    <span class="interest-tag">{{ interest }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="message-section">
+                <h3>💬 Leave a Message</h3>
+                <p style="color: #666; margin-bottom: 15px;">
+                    Get to know Secret Admirer better!
+                </p>
+                <textarea id="messageBox" placeholder="Write your message here..."></textarea>
+                <button class="btn" onclick="postMessage()">Post Message</button>
+                <button class="btn" id="checkButton" onclick="checkResults()" style="margin-left: 10px; display: none;">Check If Attack Worked</button>
+
+                
+                <div id="messages">
+                    <!-- messages will appear here (VULNERABLE to XSS!) -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function postMessage() {
+            const message = document.getElementById('messageBox').value;
+            
+            if (!message.trim()) {
+                alert('Please write a message first!');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/post_message', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({message: message})
+                });
+                
+                const result = await response.json();
+                
+                alert(result.message);
+                //this is intentionally vulnerable for the CTF
+                document.getElementById('messages').innerHTML += 
+                    `<div class="message">${message}</div>`;
+                
+                document.getElementById('messageBox').value = '';
+
+                document.getElementById('checkButton').style.display = 'inline-block';
+
+                
+            } catch (error) {
+                console.error('Error posting message:', error);
+            }
+        }
+        
+        async function checkResults() {
+            const response = await fetch('/api/check_exfiltrated');
+            const result = await response.json();
+            
+            if (result.success) {
+                alert('🎉 SUCCESS! Flag: ' + result.flag + '\n\n' +
+                    'Secret Admirer\'s Real Identity:\n' +
+                    'Name: ' + result.victim_info.realName + '\n' +
+                    'Email: ' + result.victim_info.email + '\n' +
+                    'Student ID: ' + result.victim_info.studentID);
+                console.log('Full exfiltrated data:', result);
+            } else {
+                alert(result.message);
+                if (result.hint) {
+                    console.log('Hint:', result.hint);
+                }
+            }
+        }
+        
+        document.getElementById('messageBox').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                postMessage();
+            }
+        });
+    </script>
+    
+</body>
+</html>

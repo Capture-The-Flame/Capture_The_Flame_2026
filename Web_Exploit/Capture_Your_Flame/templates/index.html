@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartMatch - Find Your Perfect Match</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .nav-links a {
+            margin-left: 30px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .inbox-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .inbox-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .inbox-header h2 {
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .notification-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .message-card {
+            background: #fff;
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+            }
+        }
+        
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .message-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .message-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-right: 15px;
+        }
+        
+        .message-info h3 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .message-info p {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .message-preview {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .view-profile-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .view-profile-btn:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+        
+        .matches-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .matches-section h2 {
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .match-card {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .match-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        .match-card h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .match-card p {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .match-percentage {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="logo">❤️‍🔥 Capture Your Flame </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#matches">Matches</a>
+                <a href="#messages">Messages</a>
+                <a href="/profile/me">My Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- inbox section -->
+        <div class="inbox-section" id="messages">
+            <div class="inbox-header">
+                <h2>💌 Your Messages</h2>
+                <span class="notification-badge">3 New</span>
+            </div>
+            
+            <!-- featured message from secret admirer -->
+            <div class="message-card" onclick="window.location.href='/profile/SecretAdmirer'">
+                <span class="new-badge">NEW</span>
+                <div class="message-header">
+                    <div class="message-avatar">❓</div>
+                    <div class="message-info">
+                        <h3>Secret Admirer</h3>
+                        <p>Sent you a message • Just now</p>
+                    </div>
+                </div>
+                <div class="message-preview">
+                    “I love your vibe 💕 How do you feel about a Valentine’s Day date?"
+                </div>
+                <a href="/profile/SecretAdmirer" class="view-profile-btn">View Profile & Reply</a>
+            </div>
+            
+            <!-- Other dummy messages -->
+            <div class="message-card" style="opacity: 0.6; border-color: #ddd; animation: none;">
+                <div class="message-header">
+                    <div class="message-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">👤</div>
+                    <div class="message-info">
+                        <h3>Alex Mendoza</h3>
+                        <p>Sent you a message • 2 hours ago</p>
+                    </div>
+                </div>
+                <div class="message-preview">
+                    "I don’t believe in love at first swipe, but I’m open to being wrong"
+                </div>
+            </div>
+            
+            <div class="message-card" style="opacity: 0.6; border-color: #ddd; animation: none;">
+                <div class="message-header">
+                    <div class="message-avatar" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">👤</div>
+                    <div class="message-info">
+                        <h3>Jordan Anderson</h3>
+                        <p>Sent you a message • Yesterday</p>
+                    </div>
+                </div>
+                <div class="message-preview">
+                    "Are you a loan? Because you’ve got my interest 😉"
+                </div>
+            </div>
+        </div>
+        
+        <!-- matches section -->
+        <div class="matches-section" id="matches">
+            <h2>💖 Your Matches</h2>
+            <div class="matches-grid">
+                <div class="match-card" onclick="window.location.href='/profile/SecretAdmirer'">
+                    <div class="match-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">❓</div>
+                    <h4>Secret Admirer</h4>
+                    <p>Identity Hidden</p>
+                    <div class="match-percentage">98% Match</div>
+                </div>
+                
+                <div class="match-card" style="opacity: 0.6;">
+                    <div class="match-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">👤</div>
+                    <h4>Alex Mendoza</h4>
+                    <p>25 • Computer Science</p>
+                    <div class="match-percentage">87% Match</div>
+                </div>
+                
+                <div class="match-card" style="opacity: 0.6;">
+                    <div class="match-avatar" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">👤</div>
+                    <h4>Jordan Anderson</h4>
+                    <p>23 • Business</p>
+                    <div class="match-percentage">82% Match</div>
+                </div>
+                
+                <div class="match-card" style="opacity: 0.6;">
+                    <div class="match-avatar" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">👤</div>
+                    <h4>Taylor Kennedy</h4>
+                    <p>24 • Engineering</p>
+                    <div class="match-percentage">79% Match</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //adds some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            //smooth scroll for links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

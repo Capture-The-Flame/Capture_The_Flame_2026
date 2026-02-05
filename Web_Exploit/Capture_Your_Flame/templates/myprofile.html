@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Capture Your Flame</title>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links a {
+            margin-left: 30px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+        }
+        
+        .profile-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+        
+        .profile-header h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .profile-stats {
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .profile-section {
+            margin-bottom: 35px;
+        }
+        
+        .profile-section h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .profile-section p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .interest-tag {
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .photo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .edit-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto 0;
+        }
+        
+        .edit-btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="logo">❤️‍🔥 Capture Your Flame</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/#matches">Matches</a>
+                <a href="/#messages">Messages</a>
+                <a href="/profile/me" style="color: #ff6b6b;">My Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-pic">❤️‍🔥</div>
+                <h1>Elena Ramirez</h1>
+                <div class="profile-stats">
+                    21 years old • Computer Science Student
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>📝 About Me</h3>
+                <p>You’ll usually catch me studying cybersecurity, hitting the gym, or reading something. 
+                    Basically a mix of nerdy and gym rat in the best way.</p>
+            </div>
+            
+            <div class="profile-section">
+                <h3>💖 My Interests</h3>
+                <div class="interests">
+                    <span class="interest-tag">Cybersecurity</span>
+                    <span class="interest-tag">Mystery Novels</span>
+                    <span class="interest-tag">Traveling</span>
+                    <span class="interest-tag">Gym</span>
+                    <span class="interest-tag">Puzzles</span>
+                    <span class="interest-tag">CTF Competitions</span>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>📸 My Photos</h3>
+                <div class="photos-grid">
+                    <img src="{{ url_for('static', filename='images/profile_picture2.jpg') }}" alt="Photo 1" class="photo-img">
+                    <img src="{{ url_for('static', filename='images/profile_picture1.jpg') }}" alt="Photo 2" class="photo-img">
+                    <img src="{{ url_for('static', filename='images/profile_picture3.jpg') }}" alt="Photo 3" class="photo-img">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
