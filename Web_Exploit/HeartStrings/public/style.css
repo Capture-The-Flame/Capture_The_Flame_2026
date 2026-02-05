@@ -1,0 +1,215 @@
+/* GLOBAL STYLES */
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif; 
+  background: radial-gradient(circle at center, #ffe6ea, #ffc5d0); 
+  color: #880e4f; 
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* TYPOGRAPHY */
+h1, h2 {
+  font-family: 'Pacifico', cursive; 
+  margin: 0;
+}
+
+/* FLOATING HEARTS ANIMATION (Background) */
+.bg-hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through */
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg);
+  animation: floatUp 10s linear infinite;
+}
+
+/* Make square divs look like hearts using pseudo-elements */
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: inherit;
+  border-radius: 50%;
+}
+.heart::before { top: -20px; left: 0; }
+.heart::after { top: 0; left: -20px; }
+
+/* Randomize heart positions and speeds */
+.heart:nth-child(1) { left: 10%; animation-duration: 8s; opacity: 0.3; }
+.heart:nth-child(2) { left: 30%; animation-duration: 12s; width: 60px; height: 60px; }
+.heart:nth-child(2)::before, .heart:nth-child(2)::after { width: 60px; height: 60px; top: -30px; left: -30px; } /* Fix big heart */
+.heart:nth-child(3) { left: 70%; animation-duration: 6s; opacity: 0.4; }
+.heart:nth-child(4) { left: 50%; animation-duration: 10s; width: 20px; height: 20px; }
+.heart:nth-child(5) { left: 90%; animation-duration: 9s; opacity: 0.5; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
+}
+
+/* LANDING PAGE */
+.landing {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.landing h1 {
+  font-size: 5rem;
+  color: #d81b60;
+  text-shadow: 2px 2px 0px white;
+}
+
+.landing .subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.landing .warning {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.landing button {
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: #d81b60;
+  color: white;
+  box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.landing button:hover {
+  transform: scale(1.05);
+  background: #ad1457;
+}
+
+/* APP / CARD STYLES */
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.card {
+  background: white;
+  width: 350px;
+  border-radius: 25px;
+  box-shadow: 0 20px 50px rgba(136, 14, 79, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-container {
+  position: relative;
+  height: 400px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.card h2 {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.bio {
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  margin-bottom: 15px;
+}
+
+.interests {
+  background: #fff0f5;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  color: #d81b60;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.buttons button {
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+button.no {
+  background: white;
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+}
+
+button.yes {
+  background: #ff4081;
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none !important;
+}
