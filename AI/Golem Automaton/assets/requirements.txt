@@ -1,0 +1,6 @@
+# Python packages required for this application
+# Install these with: pip install -r requirements.txt
+
+Flask==3.0.0           # Web framework (creates the API)
+Pillow==10.1.0         # Image processing library
+pytesseract==0.3.10    # OCR library (reads text from images)

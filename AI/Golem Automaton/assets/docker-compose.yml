@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # This defines our OCR challenge service
+  ocr-challenge:
+    # Build from the Dockerfile in this directory
+    build: .
+    
+    # Give the container a friendly name
+    container_name: scribes-cipher-challenge
+    
+    # Map port 5000 inside container to port 5000 on your computer
+    ports:
+      - "5000:5000"
+    
+    # Environment variables
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1  # Show Python output immediately
+    
+    # Restart policy: restart if it crashes
+    restart: unless-stopped
+    
+    # Health check: verify the service is running
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
