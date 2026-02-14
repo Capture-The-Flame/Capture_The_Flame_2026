@@ -1,0 +1,1 @@
+While testing, please make sure all files are turned back to png if you do change them

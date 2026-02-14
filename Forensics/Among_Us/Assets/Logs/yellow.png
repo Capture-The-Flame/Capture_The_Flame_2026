@@ -1,0 +1,5 @@
+public class yellow {
+    public static void yellow(String[] args) {
+        System.out.println("not me");
+    }
+}
