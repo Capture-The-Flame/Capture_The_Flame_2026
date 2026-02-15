@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  royal-rune-wall:
+    build:
+      context: ./Assets
+      dockerfile: Dockerfile
+    container_name: royal_rune_wall
+    ports:
+      - "8080:80"
+    restart: unless-stopped
