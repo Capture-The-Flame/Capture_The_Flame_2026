@@ -58,8 +58,8 @@ def get_response_from_gnome(text,convo_history):
     # print(response.json())
     gnome_response = response.json().get("choices")[0].get("message").get("content")
     # print(response.json().get("choices")[0].get("message").get("content"))
-    audio = get_audio_from_gnome(gnome_response)
-    return ({"sent":text},{"recieved":gnome_response},{"audio":audio})
+    # audio = get_audio_from_gnome(gnome_response)
+    return ({"sent":text},{"recieved":gnome_response},{"audio":None})
 
 def get_system_prompt():
     return """

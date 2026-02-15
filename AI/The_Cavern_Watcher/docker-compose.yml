@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  cavern_watcher:
+    build:
+      context: ./Assets
+      dockerfile: Dockerfile
+    container_name: cavern_watcher_app
+    ports:
+      - "6066:6066"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    restart: unless-stopped

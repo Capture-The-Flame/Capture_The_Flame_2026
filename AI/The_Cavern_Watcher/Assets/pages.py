@@ -1,7 +1,7 @@
 import style
 import scripts
 
-path = "http://127.0.0.1:5000/"
+path = "http://127.0.0.1:6066/"
 
 def generate_page():
     return f"""
@@ -40,7 +40,6 @@ def generate_chat_box():
             <div class="input-area">
                 <input type="text" id="userInput" placeholder="Type your message...">
                 <button class="sendBtn">Send</button>
-                <button id="recordBtn" class="recordBtn">Record</button>
             </div>
     </div>
         {scripts.get_chat_scripts()}
