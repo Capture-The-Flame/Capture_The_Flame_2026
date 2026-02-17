@@ -21,7 +21,11 @@ export default function Home() {
   const sendMessage = async () => {
 
     const userMessage = { role: 'user', content: message };
-    setMessages(prev => [...prev, userMessage]);
+    // setMessages(prev => [...prev, userMessage]);
+
+    const updatedMessages = [...messages,userMessage];
+
+    setMessages(updatedMessages);
 
     try {
       const response = await fetch('/api/chat', {
@@ -29,7 +33,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messages }),
+        body: JSON.stringify({ messages: updatedMessages }),
       });
 
       if (!response.ok) {
