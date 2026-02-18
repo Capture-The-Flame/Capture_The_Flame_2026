@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  royal-council-app:
+    build: .
+    container_name: royal-council-container
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
