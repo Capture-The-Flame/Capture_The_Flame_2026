@@ -24,12 +24,9 @@ function checkPassword() {
     const input = document.getElementById('passwordInput').value;
     const errorMsg = document.getElementById('errorMessage');
     const secretReveal = document.getElementById('secretReveal');
-    
-    // Obfuscated password check (password is "72901")
     const p = String.fromCharCode(55, 50, 57, 48, 49);
     
     if (input === p) {
-        // Construct the secret message dynamically - "flame{open_the_box}"
         const s1 = String.fromCharCode(102, 108, 97, 109, 101);
         const s2 = String.fromCharCode(123);
         const s3 = String.fromCharCode(111, 112, 101, 110);

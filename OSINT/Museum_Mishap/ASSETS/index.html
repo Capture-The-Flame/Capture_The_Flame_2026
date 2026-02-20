@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grand Museum</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" onclick="showPage('landing')">Home</a>
+        <a href="#" onclick="showPage('artifacts')">Artifacts</a>
+    </nav>
+
+    <!-- Landing Page -->
+    <div id="landingPage">
+        <div class="container">
+            <div class="hero">
+                <div class="main-links">
+                    <a href="#contributors" class="main-link">View Contributors</a>
+                    <a href="#" class="main-link" onclick="showPage('artifacts')">Explore Artifacts</a>
+                </div>
+            </div>
+
+            <!-- Contributors Section -->
+            <div class="contributors-section" id="contributors">
+                <h2>Our Distinguished Contributors</h2>
+                <div class="contributors-grid">
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">AH</div>
+                        <h3 class="contributor-name">Dr. Alexandra Hart</h3>
+                        <p class="contributor-role">Chief Archaeologist</p>
+                        <p class="contributor-bio">With over 20 years of field experience, Dr. Hart has led expeditions to uncover ancient civilizations across five continents.</p>
+                    </div>
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">BD</div>
+                        <h3 class="contributor-name">Bob Dinosaur</h3>
+                        <p class="contributor-role">Historical Preservation Expert</p>
+                        <p class="contributor-bio">Specializing in paleontology, Bob is a new member of our team. Bob is also a big fan and supporter of WiCyS!</p>
+                    </div>
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">SC</div>
+                        <h3 class="contributor-name">Prof. Sarah Chen</h3>
+                        <p class="contributor-role">Ancient Languages Specialist</p>
+                        <p class="contributor-bio">Fluent in twelve ancient languages, Prof. Chen deciphers the secrets hidden in historical texts and inscriptions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Artifacts Page -->
+    <div id="artifactsPage">
+        <header>
+            <h1>The Artifact Vault</h1>
+            <p class="tagline">Some treasures require the right key...</p>
+        </header>
+
+        <div class="container">
+            <div class="artifacts-container">
+                <div class="treasure-chest"></div>
+                
+                <div class="password-section">
+                    <input type="password" class="password-input" id="passwordInput" placeholder="Enter the secret password">
+                    <button class="submit-btn" onclick="checkPassword()">Unlock</button>
+                    <div class="error-message" id="errorMessage">Incorrect password. Try again.</div>
+                </div>
+
+                <div class="secret-reveal" id="secretReveal">
+                    <p class="secret-text" id="secretText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

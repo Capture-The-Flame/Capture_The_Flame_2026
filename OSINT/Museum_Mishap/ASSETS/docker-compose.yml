@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  website:
+    build: .
+    container_name: nginx_static_site
+    ports:
+      - "5000:80"
+    restart: unless-stopped
