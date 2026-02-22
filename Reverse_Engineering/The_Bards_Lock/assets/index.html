@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>The Arcane Seal</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                zoom: 1.4;
+                --bg: #04030a;
+                --bg2: #070512;
+                --bgp: #0b0818;
+                --bgc: #110e22;
+                --pd: #1a0f3a;
+                --pm: #2d1a6e;
+                --pp: #4a2aaa;
+                --pb: #6b4acd;
+                --pg: #9370e8;
+                --ps: #c4aaff;
+                --gd: #6b4f1f;
+                --gm: #a07228;
+                --gp: #c8892a;
+                --gb: #e8a94a;
+                --gg: #f5c060;
+                --rd: #3a0a2a;
+                --rm: #7a1a5a;
+                --rp: #c43090;
+                --tm: #5a4a70;
+                --td: #8a7aaa;
+                --tb: #c4b8e0;
+                --tB: #f0e8ff;
+            }
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            body {
+                background: var(--bg);
+                font-family: "Crimson Text", serif;
+                color: var(--tb);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #glcanvas {
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+            }
+
+            #particles {
+                position: fixed;
+                inset: 0;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            #panel {
+                position: relative;
+                z-index: 10;
+                width: min(520px, 92vw);
+                background: linear-gradient(
+                    180deg,
+                    rgba(11, 8, 24, 0.97) 0%,
+                    rgba(4, 3, 10, 0.98) 100%
+                );
+                border: 1px solid var(--pm);
+                padding: 44px 44px 40px;
+                text-align: center;
+                box-shadow:
+                    0 0 0 1px rgba(147, 112, 232, 0.12),
+                    0 0 60px rgba(74, 42, 170, 0.18),
+                    0 0 120px rgba(74, 42, 170, 0.08),
+                    inset 0 1px 0 rgba(147, 112, 232, 0.15);
+            }
+
+            #panel::before,
+            #panel::after,
+            #panel .corn-bl,
+            #panel .corn-br {
+                content: "";
+                position: absolute;
+                width: 22px;
+                height: 22px;
+                border-color: var(--pb);
+                border-style: solid;
+            }
+            #panel::before {
+                top: -1px;
+                left: -1px;
+                border-width: 2px 0 0 2px;
+            }
+            #panel::after {
+                top: -1px;
+                right: -1px;
+                border-width: 2px 2px 0 0;
+            }
+            #panel .corn-bl {
+                bottom: -1px;
+                left: -1px;
+                border-width: 0 0 2px 2px;
+            }
+            #panel .corn-br {
+                bottom: -1px;
+                right: -1px;
+                border-width: 0 2px 2px 0;
+            }
+
+            .top-rule {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 28px;
+            }
+            .top-rule span {
+                flex: 1;
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--pm),
+                    transparent
+                );
+            }
+            .top-rule i {
+                font-style: normal;
+                font-family: "Share Tech Mono", monospace;
+                font-size: 8px;
+                letter-spacing: 0.38em;
+                color: var(--td);
+                text-transform: uppercase;
+            }
+
+            .eyebrow {
+                font-family: "Share Tech Mono", monospace;
+                font-size: 8.5px;
+                letter-spacing: 0.45em;
+                color: var(--pg);
+                text-transform: uppercase;
+                margin-bottom: 10px;
+                display: block;
+            }
+            h1 {
+                font-family: "Cinzel Decorative", serif;
+                font-size: clamp(18px, 4.5vw, 28px);
+                font-weight: 700;
+                color: var(--tB);
+                letter-spacing: 0.06em;
+                line-height: 1.15;
+                text-shadow:
+                    0 0 30px rgba(147, 112, 232, 0.35),
+                    0 0 60px rgba(147, 112, 232, 0.15);
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                font-size: 13.5px;
+                font-style: italic;
+                color: var(--td);
+                margin-bottom: 28px;
+                line-height: 1.55;
+            }
+
+            .div-gems {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 18px 0;
+            }
+            .div-gems span {
+                flex: 1;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, var(--pm));
+            }
+            .div-gems span.r {
+                background: linear-gradient(90deg, var(--pm), transparent);
+            }
+            .gem {
+                width: 7px;
+                height: 7px;
+                background: var(--pb);
+                clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+                box-shadow: 0 0 10px var(--pg);
+            }
+            .gem.sm {
+                width: 4px;
+                height: 4px;
+                background: var(--gm);
+                box-shadow: none;
+            }
+
+            #status {
+                font-family: "Share Tech Mono", monospace;
+                font-size: 10px;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                margin-bottom: 18px;
+                color: var(--pg);
+                min-height: 1.4em;
+                transition: color 0.4s;
+            }
+            #status.locked {
+                color: var(--rm);
+            }
+            #status.listen {
+                color: var(--pg);
+            }
+            #status.wrong {
+                color: var(--rp);
+                animation: shake 0.35s ease;
+            }
+            #status.unlock {
+                color: var(--gg);
+            }
+
+            @keyframes shake {
+                0%,
+                100% {
+                    transform: translateX(0);
+                }
+                20% {
+                    transform: translateX(-5px);
+                }
+                60% {
+                    transform: translateX(5px);
+                }
+            }
+
+            #pips {
+                display: flex;
+                gap: 8px;
+                justify-content: center;
+                margin-bottom: 24px;
+            }
+            .pip {
+                width: 30px;
+                height: 30px;
+                border: 1px solid var(--pm);
+                background: var(--pd);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: "Cinzel", serif;
+                font-size: 12px;
+                color: var(--pm);
+                clip-path: polygon(
+                    50% 0%,
+                    100% 25%,
+                    100% 75%,
+                    50% 100%,
+                    0% 75%,
+                    0% 25%
+                );
+                transition: all 0.3s ease;
+                position: relative;
+            }
+            .pip.lit {
+                background: linear-gradient(180deg, var(--pb), var(--pm));
+                border-color: var(--pg);
+                color: var(--tB);
+                box-shadow:
+                    0 0 12px var(--pg),
+                    0 0 24px rgba(147, 112, 232, 0.4);
+            }
+
+            .pip::before {
+                content: attr(data-rune);
+                font-family: "Cinzel Decorative", serif;
+                font-size: 11px;
+            }
+
+            .btn-row {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                margin-top: 4px;
+            }
+            .btn {
+                font-family: "Cinzel", serif;
+                font-size: 8.5px;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                background: none;
+                border: 1px solid var(--pm);
+                color: var(--pg);
+                padding: 10px 20px;
+                cursor: pointer;
+                clip-path: polygon(
+                    6px 0%,
+                    100% 0%,
+                    calc(100% - 6px) 100%,
+                    0% 100%
+                );
+                transition: all 0.2s;
+                white-space: nowrap;
+            }
+            .btn:hover {
+                background: rgba(74, 42, 170, 0.2);
+                border-color: var(--pb);
+                color: var(--ps);
+                box-shadow: 0 0 14px rgba(107, 74, 205, 0.3);
+            }
+            .btn.gold {
+                background: linear-gradient(180deg, var(--gb), var(--gp));
+                border-color: var(--gb);
+                color: var(--bg);
+            }
+            .btn.gold:hover {
+                background: linear-gradient(180deg, var(--gg), var(--gb));
+                box-shadow: 0 0 18px rgba(200, 137, 42, 0.4);
+            }
+
+            #fileLabel {
+                display: inline-block;
+                cursor: pointer;
+            }
+            #fileInput {
+                display: none;
+            }
+
+            #flag-box {
+                display: none;
+                margin-top: 20px;
+                padding: 14px 20px;
+                background: rgba(11, 8, 24, 0.9);
+                border: 1px solid var(--gp);
+                box-shadow:
+                    0 0 20px rgba(200, 137, 42, 0.2),
+                    inset 0 0 20px rgba(200, 137, 42, 0.05);
+                position: relative;
+                overflow: hidden;
+            }
+            #flag-box::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    135deg,
+                    rgba(200, 137, 42, 0.06),
+                    transparent 50%
+                );
+                pointer-events: none;
+            }
+            #flag-label {
+                font-family: "Share Tech Mono", monospace;
+                font-size: 8px;
+                letter-spacing: 0.4em;
+                color: var(--gm);
+                display: block;
+                margin-bottom: 7px;
+                text-transform: uppercase;
+            }
+            #flag-text {
+                font-family: "Share Tech Mono", monospace;
+                font-size: 14px;
+                color: var(--gg);
+                word-break: break-all;
+                text-shadow: 0 0 12px rgba(245, 192, 96, 0.5);
+            }
+
+            .lore {
+                font-style: italic;
+                font-size: 13.5px;
+                color: var(--td);
+                line-height: 1.65;
+                margin-bottom: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="glcanvas"></canvas>
+
+        <canvas id="particles"></canvas>
+
+        <div id="panel">
+            <div class="corn-bl"></div>
+            <div class="corn-br"></div>
+
+            <div class="top-rule">
+                <span></span><i>arcane resonance v1.0</i><span></span>
+            </div>
+
+            <span class="eyebrow">✦ The Mage's Seal ✦</span>
+            <h1>The Bard's Lock</h1>
+
+            <p class="lore">
+                A melody, woven in the age of the first mages,<br />
+                seals this gate against the uninitiated.<br />
+                Only the true bard may give voice to the incantation.
+            </p>
+
+            <div class="div-gems">
+                <span></span>
+                <div class="gem sm"></div>
+                <div class="gem"></div>
+                <div class="gem sm"></div>
+                <span class="r"></span>
+            </div>
+
+            <div id="status" class="locked">[ THE SEAL HOLDS ]</div>
+
+            <div id="pips">
+                <div class="pip" id="pip0" data-rune="ᚨ"></div>
+                <div class="pip" id="pip1" data-rune="ᚱ"></div>
+                <div class="pip" id="pip2" data-rune="ᚲ"></div>
+                <div class="pip" id="pip3" data-rune="ᚨ"></div>
+                <div class="pip" id="pip4" data-rune="ᚾ"></div>
+                <div class="pip" id="pip5" data-rune="ᚨ"></div>
+                <div class="pip" id="pip6" data-rune="ᛗ"></div>
+                <div class="pip" id="pip7" data-rune="ᛁ"></div>
+                <div class="pip" id="pip8" data-rune="ᚲ"></div>
+            </div>
+
+            <div id="flag-box">
+                <span id="flag-label"
+                    >// seal broken — inscription revealed</span
+                >
+                <span id="flag-text"></span>
+            </div>
+
+            <div class="div-gems">
+                <span></span>
+                <div class="gem sm"></div>
+                <div class="gem"></div>
+                <div class="gem sm"></div>
+                <span class="r"></span>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn" id="micBtn">🎙 Invoke by Voice</button>
+                <label class="btn gold" id="fileLabel">
+                    ♫ Invoke by Scroll
+                    <input id="fileInput" type="file" accept="audio/*" />
+                </label>
+            </div>
+        </div>
+
+        <script>
+            const canvas = document.getElementById("glcanvas");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const gl = canvas.getContext("webgl");
+
+            const VS = `
+  attribute vec2 p;
+  void main(){ gl_Position = vec4(p,0.,1.); }
+`;
+
+            const FS = `
+  precision mediump float;
+  uniform float uT;
+  uniform float uUnlock;
+  uniform float uStep;
+  uniform vec2  uRes;
+
+  #define PI 3.14159265
+
+  float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
+  float noise(vec2 p){
+    vec2 i=floor(p),f=fract(p);
+    float a=hash(i),b=hash(i+vec2(1,0)),c=hash(i+vec2(0,1)),d=hash(i+vec2(1,1));
+    vec2 u=f*f*(3.-2.*f);
+    return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);
+  }
+  float fbm(vec2 p){
+    float v=0.,a=.5;
+    for(int i=0;i<6;i++){v+=a*noise(p);p*=2.05;a*=.5;}
+    return v;
+  }
+
+  float ring(float r, float dist, float w){
+    return smoothstep(w,0.,abs(dist-r));
+  }
+  float arc(vec2 uv, float r, float w, float start, float sweep){
+    float a = atan(uv.y, uv.x);
+    float d = length(uv);
+    float inArc = smoothstep(-.01, .01, sin((a - start) * 1.0)) *
+                  smoothstep(-.01, .01, sin((start + sweep - a) * 1.0));
+    return ring(r, d, w) * inArc;
+  }
+
+  void main(){
+    vec2 uv = (gl_FragCoord.xy - uRes*.5) / min(uRes.x, uRes.y);
+    float len = length(uv);
+    float ang = atan(uv.y, uv.x);
+
+    // Deep void background
+    float bg = fbm(uv*3.0 + vec2(uT*.04));
+    vec3 col = mix(vec3(.02,.01,.06), vec3(.04,.02,.10), bg);
+
+    // Subtle nebula glow at center
+    float nebula = exp(-len*len*8.0) * .6;
+    col += vec3(.10,.05,.25) * nebula;
+
+    // ── Magic circles ──
+    float glow = uStep;
+    float pulse = .5 + .5*sin(uT*1.4);
+    float pulse2 = .5 + .5*cos(uT*2.1);
+
+    // Outer ring — activates with progress
+    float r1 = ring(.42, len, .004 + glow*.006);
+    col += vec3(.28,.12,.70) * r1 * (.3 + glow*.7);
+    col += vec3(.18,.06,.50) * ring(.44, len, .010) * glow * pulse;
+
+    // Middle ring — rotating dashes
+    float dashAng = ang + uT * .3;
+    float dash = step(.5, fract(dashAng / PI * 6.0));
+    float r2 = ring(.30, len, .003) * dash;
+    col += vec3(.50,.25,.90) * r2 * (.2 + glow*.8);
+
+    // Inner ring
+    float r3 = ring(.18, len, .003 + glow*.004);
+    col += vec3(.80,.60,1.0) * r3 * (.15 + glow*.85);
+
+    // Rotating rune marks on outer ring
+    for(int i=0;i<9;i++){
+      float a0 = float(i) * PI*2./9. + uT*.25;
+      vec2 rpos = vec2(cos(a0),.sin(a0)) * .42;
+      float rdist = length(uv - rpos);
+      float lit = float(i) < uStep * 9.;
+      float rg = exp(-rdist*rdist * 2200.) * (.6 + lit*.4);
+      col += mix(vec3(.3,.1,.7), vec3(.9,.7,1.0), lit) * rg;
+    }
+
+    // Six-pointed star lines (inner sigil)
+    for(int k=0;k<6;k++){
+      float a0 = float(k) * PI / 3.;
+      vec2 dir = vec2(cos(a0), sin(a0));
+      float line = abs(dot(uv, vec2(-dir.y, dir.x)));
+      float inLen = step(len, .18);
+      col += vec3(.5,.2,.9) * smoothstep(.004,.0, line) * inLen * glow;
+    }
+
+    // Central core — blooms on unlock
+    float core = exp(-len*len * 80.0);
+    col += vec3(.6,.3,1.0) * core * glow * (.4 + .6*pulse2);
+
+    // Unlock effect
+    if(uUnlock > .5){
+      float flash = .5 + .5*sin(uT*4.0);
+      // Gold wave rings
+      float uwave = sin(len*30. - uT*5.0) * .5 + .5;
+      col += vec3(.9,.6,.1) * uwave * exp(-len*2.5) * .5;
+      // Center white burst
+      float burst = exp(-len*len*25.) * (1. + .4*flash);
+      col = mix(col, vec3(1.,.95,.8), burst * .8);
+      // Golden outer glow
+      col += vec3(.8,.5,.1) * exp(-len*len*4.) * .4 * flash;
+    }
+
+    // Vignette
+    col *= 1. - smoothstep(.45, .85, len);
+
+    gl_FragColor = vec4(col, 1.);
+  }
+`;
+
+            function mkShader(type, src) {
+                const s = gl.createShader(type);
+                gl.shaderSource(s, src);
+                gl.compileShader(s);
+                return s;
+            }
+            const prog = gl.createProgram();
+            gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, VS));
+            gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, FS));
+            gl.linkProgram(prog);
+            gl.useProgram(prog);
+
+            const buf = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+            gl.bufferData(
+                gl.ARRAY_BUFFER,
+                new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+                gl.STATIC_DRAW,
+            );
+            const pLoc = gl.getAttribLocation(prog, "p");
+            gl.enableVertexAttribArray(pLoc);
+            gl.vertexAttribPointer(pLoc, 2, gl.FLOAT, false, 0, 0);
+
+            const uT = gl.getUniformLocation(prog, "uT");
+            const uUnlock = gl.getUniformLocation(prog, "uUnlock");
+            const uStep = gl.getUniformLocation(prog, "uStep");
+            const uRes = gl.getUniformLocation(prog, "uRes");
+            gl.uniform2f(uRes, canvas.width, canvas.height);
+
+            const pc = document.getElementById("particles");
+            pc.width = window.innerWidth;
+            pc.height = window.innerHeight;
+            const ctx2d = pc.getContext("2d");
+            const cx = pc.width / 2,
+                cy = pc.height / 2;
+
+            const PTCL = Array.from({ length: 60 }, () => ({
+                a: Math.random() * Math.PI * 2,
+                r:
+                    0.28 *
+                    Math.min(pc.width, pc.height) *
+                    (0.7 + Math.random() * 0.6),
+                speed:
+                    (0.0004 + Math.random() * 0.0006) *
+                    (Math.random() < 0.5 ? 1 : -1),
+                size: 1 + Math.random() * 2,
+                alpha: 0.1 + Math.random() * 0.5,
+                drift: (Math.random() - 0.5) * 0.001,
+            }));
+
+            function drawParticles(step, unlock) {
+                ctx2d.clearRect(0, 0, pc.width, pc.height);
+                PTCL.forEach((p) => {
+                    p.a += p.speed;
+                    p.r += p.drift;
+                    if (p.r < 20) p.r = 20;
+                    const x = cx + Math.cos(p.a) * p.r;
+                    const y = cy + Math.sin(p.a) * p.r;
+                    const a = p.alpha * (0.3 + step * 0.7) * (unlock ? 1.5 : 1);
+                    ctx2d.beginPath();
+                    ctx2d.arc(x, y, p.size, 0, Math.PI * 2);
+                    ctx2d.fillStyle = unlock
+                        ? `rgba(245,192,96,${Math.min(a, 1)})`
+                        : `rgba(147,112,232,${Math.min(a, 1)})`;
+                    ctx2d.fill();
+                });
+            }
+
+            const _sq = [46, 57, 62, 55, 74, 49, 58, 63, 38];
+            const _r = (i) => _sq[i] ^ (i + 7);
+            const _n = _sq.length;
+
+            const _ef = [
+                82, 93, 77, 83, 66, 75, 71, 6, 31, 88, 4, 64, 5, 6, 90, 5, 4,
+                115, 66, 1, 95, 107, 13, 64, 88, 110, 89, 72, 115, 94, 9, 85,
+                72,
+            ];
+
+            function _dec(seq) {
+                const k = seq.join(",");
+                const kb = [...k].map((c) => c.charCodeAt(0));
+                return _ef.map((b, i) => b ^ kb[i % kb.length]);
+            }
+
+            const statusEl = document.getElementById("status");
+
+            function setPips(n) {
+                for (let i = 0; i < _n; i++) {
+                    const el = document.getElementById("pip" + i);
+                    el.className = "pip" + (i < n ? " lit" : "");
+                }
+            }
+
+            function setStatus(msg, cls) {
+                statusEl.textContent = msg;
+                statusEl.className = cls || "listen";
+            }
+
+            let analyser, dataArray;
+            let _state = 0;
+            let _heldMs = 0;
+            let _lastT = 0;
+            let _unlocked = false;
+            let _audioCtx = null;
+            let _cooldownUntil = 0;
+
+            const HOLD_MS = 400;
+            const COOLDOWN_MS = 250;
+            const BIN_TOL = 2;
+            const SIG_THR = 180;
+
+            function getDominantBin(data) {
+                let mx = 0,
+                    bin = -1;
+                for (let i = 3; i < 200; i++) {
+                    if (data[i] > mx) {
+                        mx = data[i];
+                        bin = i;
+                    }
+                }
+                return mx >= SIG_THR ? bin : -1;
+            }
+
+            function initAnalyser(sourceNode) {
+                analyser = _audioCtx.createAnalyser();
+                analyser.fftSize = 4096;
+                sourceNode.connect(analyser);
+                dataArray = new Uint8Array(analyser.frequencyBinCount);
+                setStatus("[ THE SEAL LISTENS... ]", "listen");
+                document.getElementById("micBtn").style.display = "none";
+                document.getElementById("fileLabel").style.display = "none";
+                _lastT = performance.now();
+            }
+
+            function tick(now) {
+                if (!analyser) return;
+                const dt = now - _lastT;
+                _lastT = now;
+
+                analyser.getByteFrequencyData(dataArray);
+                const dominant = getDominantBin(dataArray);
+                const target = _r(_state);
+
+                if (dominant !== -1 && Math.abs(dominant - target) <= BIN_TOL) {
+                    _heldMs += dt;
+                    if (_heldMs >= HOLD_MS) {
+                        _state++;
+                        _heldMs = 0;
+                        _cooldownUntil = now + COOLDOWN_MS;
+                        setPips(_state);
+                        if (_state >= _n) {
+                            triggerUnlock();
+                            return;
+                        }
+                        setStatus(
+                            `[ INCANTATION — NOTE ${_state} / ${_n} ]`,
+                            "listen",
+                        );
+                    }
+                } else if (
+                    dominant !== -1 &&
+                    Math.abs(dominant - target) > BIN_TOL
+                ) {
+                    if (_state > 0 && now > _cooldownUntil) {
+                        _state = 0;
+                        _heldMs = 0;
+                        setPips(0);
+                        setStatus("[ WRONG NOTE — THE SEAL RESETS ]", "wrong");
+                        setTimeout(() => {
+                            if (!_unlocked)
+                                setStatus("[ THE SEAL LISTENS... ]", "listen");
+                        }, 900);
+                    } else {
+                        _heldMs = 0;
+                    }
+                }
+            }
+
+            function triggerUnlock() {
+                _unlocked = true;
+                setStatus("[ THE SEAL BREAKS ]", "unlock");
+                const decoded = _dec(
+                    Array.from({ length: _n }, (_, i) => _r(i)),
+                );
+                const flagBox = document.getElementById("flag-box");
+                const flagText = document.getElementById("flag-text");
+                flagBox.style.display = "block";
+                flagText.textContent = String.fromCharCode(...decoded);
+            }
+
+            document
+                .getElementById("micBtn")
+                .addEventListener("click", async () => {
+                    _audioCtx = new (
+                        window.AudioContext || window.webkitAudioContext
+                    )({ sampleRate: 44100 });
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: true,
+                    });
+                    const src = _audioCtx.createMediaStreamSource(stream);
+                    initAnalyser(src);
+                });
+
+            document
+                .getElementById("fileInput")
+                .addEventListener("change", async (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    _audioCtx = new (
+                        window.AudioContext || window.webkitAudioContext
+                    )({ sampleRate: 44100 });
+                    const arrayBuf = await file.arrayBuffer();
+                    const audioBuf = await _audioCtx.decodeAudioData(arrayBuf);
+                    const src = _audioCtx.createBufferSource();
+                    src.buffer = audioBuf;
+
+                    initAnalyser(src);
+                    src.start(0);
+
+                    setStatus("[ SCROLL BEING INVOKED... ]", "listen");
+                    src.onended = () => {
+                        if (!_unlocked)
+                            setStatus(
+                                "[ THE SCROLL IS SPENT — SEAL HOLDS ]",
+                                "locked",
+                            );
+                    };
+                });
+
+            function render(now) {
+                tick(now);
+                const step = _state / _n;
+                gl.uniform1f(uT, now / 1000);
+                gl.uniform1f(uUnlock, _unlocked ? 1.0 : 0.0);
+                gl.uniform1f(uStep, step);
+                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                drawParticles(step, _unlocked);
+                requestAnimationFrame(render);
+            }
+            requestAnimationFrame(render);
+        </script>
+    </body>
+</html>
