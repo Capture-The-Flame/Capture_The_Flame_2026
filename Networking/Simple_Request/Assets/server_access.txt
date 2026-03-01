@@ -1,0 +1,30 @@
+Date: 27th Jan 2026
+User: Reckinger
+Info Accessed: Server Logs
+# Bytes Accessed: 749475
+
+Date: 11th Feb 2026
+User: Maratos
+Info Accessed: Documentation
+# Bytes Accessed: 4817168541
+
+Date: 25th Feb 2026
+User: Pina
+Info Accessed: Tests
+# Bytes Accessed: 314159
+
+Date: 11th March 2026 
+User: McCarty
+Info Accessed: Flag
+# Bytes Accessed: ERROR-01<Number to large to display>
+
+Date: 2nd April 2026
+User: Theys
+Info Accessed: Documentation
+# Bytes Accessed: 1618033988749 
+
+Date: 11th April 2026
+User: Bello
+Info Accessed: Tests
+# Bytes Accessed: 100
+

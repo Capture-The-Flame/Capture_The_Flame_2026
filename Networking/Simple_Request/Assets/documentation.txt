@@ -1,0 +1,17 @@
+Recent fixes to the server:
+
+25th Dec 2025:
+Now users must provide bytes=N argument before their user information
+
+1st Jan 2026:
+We have limited the amount of information that can be read in requests. The current limit is INT_MAX.
+
+19th Jan 2026:
+A 10 seconds server cool down after 3 consecutive failed attempts to log in
+
+14th Feb 2026:
+We have stopped the ability for users to fetch certain files they want from the server.
+
+28th Feb 2026:
+We read bytes into a long variable to store larger values, allowing for smoother user experiences on the server.
+
