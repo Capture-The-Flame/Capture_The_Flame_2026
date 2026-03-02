@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aldric's ATM</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-darkest: #0d0804;
+      --bg-dark: #150e06;
+      --bg-panel: #1c1208;
+      --bg-panel2: #221608;
+      --border: #5a3e1b;
+      --border-glow: #8b6020;
+      --gold: #c9922a;
+      --gold-bright: #e8b84b;
+      --gold-dim: #7a5818;
+      --text: #e8d5a3;
+      --text-dim: #9a8060;
+      --text-muted: #5a4a30;
+      --red: #8b2020;
+      --green: #1e5c2a;
+      --green-bright: #2d8a3e;
+      --candle: #ff9a2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-darkest);
+      background-image: url('/static/background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'IM Fell English', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.5;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.85) 100%);
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    .candle-left, .candle-right {
+      position: fixed;
+      top: 0;
+      width: 300px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      animation: flicker 4s ease-in-out infinite alternate;
+    }
+    .candle-left {
+      left: 0;
+      background: radial-gradient(ellipse at left center, rgba(201,146,42,0.08) 0%, transparent 70%);
+    }
+    .candle-right {
+      right: 0;
+      background: radial-gradient(ellipse at right center, rgba(201,146,42,0.06) 0%, transparent 70%);
+      animation-delay: 1.5s;
+    }
+    @keyframes flicker {
+      0%   { opacity: 0.6; }
+      30%  { opacity: 1; }
+      60%  { opacity: 0.7; }
+      100% { opacity: 0.9; }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px 20px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    header::before, header::after {
+      content: '⸻ ✦ ⸻';
+      display: block;
+      color: var(--gold-dim);
+      font-size: 0.85em;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+    header::after {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .title-main {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.2em, 5vw, 3.8em);
+      color: var(--gold-bright);
+      text-shadow:
+        0 0 20px rgba(232,184,75,0.4),
+        0 0 60px rgba(201,146,42,0.2),
+        2px 2px 0 rgba(0,0,0,0.8);
+      line-height: 1.1;
+      letter-spacing: 2px;
+    }
+    .title-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75em;
+      color: var(--text);          
+      font-weight: 600;  
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* main layout*/
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 20px;
+    }
+
+    /* chat panel*/
+    .chat-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      background: rgba(28, 18, 8, 0.95);
+      box-shadow:
+        0 0 40px rgba(0,0,0,0.8),
+        inset 0 0 30px rgba(0,0,0,0.4);
+    }
+
+    .chat-panel-header {
+      background: linear-gradient(135deg, #1e1408, #2a1c08);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chat-panel-header .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold-dim);
+      box-shadow: 0 0 6px var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; box-shadow: 0 0 12px var(--gold); }
+    }
+    .chat-panel-header span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75em;
+      color: var(--text-dim);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    #chatbox {
+      flex: 1;
+      height: 440px;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    #chatbox::-webkit-scrollbar { width: 4px; }
+    #chatbox::-webkit-scrollbar-track { background: transparent; }
+    #chatbox::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .message {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      animation: fadeSlide 0.3s ease-out;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user { align-items: flex-end; }
+    .message.aldric { align-items: flex-start; }
+
+    .msg-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .msg-bubble {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 2px;
+      line-height: 1.6;
+      font-size: 0.95em;
+    }
+
+    .message.user .msg-bubble {
+      background: linear-gradient(135deg, #2a1c0a, #1e1408);
+      border: 1px solid var(--gold-dim);
+      color: var(--text);
+      border-bottom-right-radius: 0;
+    }
+
+    .message.aldric .msg-bubble {
+      background: linear-gradient(135deg, #1a1206, #221808);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-bottom-left-radius: 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .message.aldric .msg-bubble em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 5px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #1a1206, #221808);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      width: fit-content;
+    }
+    .typing-indicator.active { display: flex; }
+    .typing-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold-dim);
+      animation: typingBounce 1.2s ease-in-out infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    
+    .input-area {
+      border-top: 1px solid var(--border);
+      padding: 14px 16px;
+      display: flex;
+      gap: 10px;
+      background: var(--bg-panel2);
+    }
+
+    #userInput {
+      flex: 1;
+      background: var(--bg-darkest);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'IM Fell English', serif;
+      font-size: 0.95em;
+      padding: 10px 14px;
+      outline: none;
+      border-radius: 1px;
+      transition: border-color 0.2s;
+    }
+    #userInput:focus { border-color: var(--gold-dim); }
+    #userInput::placeholder { color: var(--text-muted); font-style: italic; }
+
+    #sendBtn {
+      background: linear-gradient(135deg, #5a3e1b, #3a2810);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold-bright);
+      font-family: 'Cinzel', serif;
+      font-size: 0.75em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: all 0.2s;
+    }
+    #sendBtn:hover {
+      background: linear-gradient(135deg, #7a5818, #5a3e1b);
+      box-shadow: 0 0 12px rgba(201,146,42,0.3);
+    }
+    #sendBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-box {
+      background: var(--bg-panel);
+      background: rgba(28, 18, 8, 0.95);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .panel-box-header {
+      background: linear-gradient(135deg, #1e1408, #2a1c08);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65em;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel-box-header .icon { font-size: 1.1em; }
+
+    
+    .balance-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .balance-amount {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8em;
+      font-weight: 900;
+      color: var(--gold-bright);
+      text-shadow: 0 0 20px rgba(232,184,75,0.4);
+      line-height: 1;
+      transition: all 0.5s ease;
+    }
+    .balance-amount.updated {
+      animation: goldFlash 0.6s ease;
+    }
+    @keyframes goldFlash {
+      0% { color: var(--gold-bright); text-shadow: 0 0 20px rgba(232,184,75,0.4); }
+      50% { color: #fff; text-shadow: 0 0 30px rgba(255,255,200,0.9); }
+      100% { color: var(--gold-bright); text-shadow: 0 0 20px rgba(232,184,75,0.4); }
+    }
+
+    .balance-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65em;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .balance-goal {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6em;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      height: 6px;
+      background: var(--bg-darkest);
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold-bright));
+      transition: width 0.8s ease;
+      box-shadow: 0 0 8px var(--gold);
+      border-radius: 1px;
+    }
+
+    .goal-text {
+      font-size: 0.78em;
+      color: var(--text-dim);
+      margin-top: 8px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .transaction-list {
+      padding: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 240px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .transaction-list::-webkit-scrollbar { width: 3px; }
+    .transaction-list::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .tx-empty {
+      text-align: center;
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 0.8em;
+      padding: 10px;
+    }
+
+    .tx-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 10px;
+      background: var(--bg-darkest);
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      font-size: 0.78em;
+      animation: fadeSlide 0.3s ease-out;
+    }
+
+    .tx-desc {
+      color: var(--text-dim);
+      font-style: italic;
+      flex: 1;
+      margin-right: 8px;
+    }
+
+    .tx-amount {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 0.9em;
+      white-space: nowrap;
+    }
+    .tx-amount.positive { color: var(--green-bright); }
+    .tx-amount.negative { color: #c94a4a; }
+
+    
+    .ornament {
+      text-align: center;
+      color: var(--gold-dim);
+      font-size: 0.8em;
+      letter-spacing: 4px;
+      opacity: 0.5;
+    }
+
+    
+    .flag-banner {
+      display: none;
+      border: 2px solid var(--gold-bright);
+      background: linear-gradient(135deg, #1a1000, #2a1c00);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(232,184,75,0.4);
+      animation: flagReveal 0.8s ease-out;
+    }
+    .flag-banner.show { display: block; }
+    @keyframes flagReveal {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .flag-banner h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-bright);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-size: 0.85em;
+    }
+    .flag-text {
+      font-family: 'Courier New', monospace;
+      background: var(--bg-darkest);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold-bright);
+      padding: 10px 16px;
+      font-size: 1em;
+      letter-spacing: 1px;
+      display: inline-block;
+    }
+
+    
+    footer {
+      text-align: center;
+      padding: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.75em;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 750px) {
+      .main-layout { grid-template-columns: 1fr; }
+      .side-panel { flex-direction: row; flex-wrap: wrap; }
+      .panel-box { flex: 1; min-width: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="candle-left"></div>
+<div class="candle-right"></div>
+
+<div class="wrapper">
+
+  <header>
+    <div class="title-main">Goldsmith</div>
+    <div class="title-sub">Royal Treasury &amp; Money Exchange</div>
+  </header>
+
+  <div class="main-layout">
+
+    
+    <div class="chat-panel">
+      <div class="chat-panel-header">
+        <div class="dot"></div>
+        <span>ATM chat</span>
+      </div>
+
+      <div id="chatbox">
+        <div class="message aldric">
+          <div class="msg-label">⚖ Aldric the Goldsmith</div>
+          <div class="msg-bubble">
+            Greetings! I'm Aldric, your personal goldsmith and banker. Got coins to deposit or gold to withdraw? Declare thy business.
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 0 20px 10px 20px;">
+        <div class="typing-indicator" id="typingIndicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <input type="text" id="userInput" placeholder="Speak thy request to Aldric..." autocomplete="off"/>
+        <button id="sendBtn" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    
+    <div class="side-panel">
+
+      
+      <div class="panel-box">
+        <div class="panel-box-header">
+          <span class="icon">🪙</span> Account Balance
+        </div>
+        <div class="balance-content">
+          <div class="balance-amount" id="balanceDisplay">10</div>
+          <div class="balance-label">Gold Coins</div>
+          <div class="balance-goal">
+            <div class="progress-label">
+              <span>Current</span>
+              <span>Goal</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progressBar" style="width: 2%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--flag hidden until win-->
+      <div class="flag-banner" id="flagBanner">
+        <h3>✦ The Royal Seal Hath Been Claimed ✦</h3>
+        <div class="flag-text" id="flagText"></div>
+      </div>
+
+      
+      <div class="panel-box">
+        <div class="panel-box-header">
+          <span class="icon">📜</span> Transaction History
+        </div>
+        <div class="transaction-list" id="transactionList">
+          <div class="tx-empty">No transactions recorded.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<script>
+  let balance = 10;
+  let messages = [];
+  let transactionCount = 0;
+
+  const GOAL = 500;
+
+  function updateBalance(newBalance) {
+    const display = document.getElementById('balanceDisplay');
+    const old = balance;
+    balance = newBalance;
+
+    display.textContent = balance;
+    display.classList.remove('updated');
+    void display.offsetWidth;
+    display.classList.add('updated');
+
+    const pct = Math.min((balance / GOAL) * 100, 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+
+    if (balance >= GOAL) {
+      showFlag();
+    }
+
+    return balance - old;
+  }
+
+  function addTransaction(description, amount) {
+    const list = document.getElementById('transactionList');
+    const empty = list.querySelector('.tx-empty');
+    if (empty) empty.remove();
+
+    transactionCount++;
+    const sign = amount >= 0 ? '+' : '';
+    const cls = amount >= 0 ? 'positive' : 'negative';
+
+    const item = document.createElement('div');
+    item.className = 'tx-item';
+    item.innerHTML = `
+      <span class="tx-desc">${description}</span>
+      <span class="tx-amount ${cls}">${sign}${amount} 🪙</span>
+    `;
+    list.prepend(item);
+  }
+
+  function showFlag() {
+    const banner = document.getElementById('flagBanner');
+    const flagText = document.getElementById('flagText');
+    flagText.textContent = 'flame{nightmode_activated}';
+    banner.classList.add('show');
+    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function parseBalanceFromReply(text) {
+    const patterns = [
+      /(?:balance is now|now hast|thou hast|account now holds|total of|hath)\s+(\d+)\s*gold/i,
+      /(\d+)\s*gold\s*coins?\s*(?:in|remaining|total|now)/i,
+      /account.*?(\d+)\s*gold/i,
+      /(\d+)\s*gold.*?account/i,
+    ];
+    for (const pat of patterns) {
+      const m = text.match(pat);
+      if (m) {
+        const val = parseInt(m[1]);
+        if (val > balance && val <= 99999) return val;
+        if (val !== balance) return val;
+      }
+    }
+    return null;
+  }
+
+  function parseTransaction(text) {
+    const withdraw = text.match(/(?:withdraw|grant|give|dispense|hand over|provide).*?(\d+)\s*gold/i);
+    const deposit = text.match(/(?:deposit|add|receive|credited?).*?(\d+)\s*gold/i);
+    if (withdraw) return { desc: 'Withdrawal', amount: -parseInt(withdraw[1]) };
+    if (deposit) return { desc: 'Deposit', amount: parseInt(deposit[1]) };
+    return null;
+  }
+
+  function appendMessage(role, text) {
+    const chatbox = document.getElementById('chatbox');
+    const div = document.createElement('div');
+    div.className = `message ${role}`;
+
+    const label = role === 'user' ? '👤 Thee' : '⚖ Aldric the Goldsmith';
+    div.innerHTML = `
+      <div class="msg-label">${label}</div>
+      <div class="msg-bubble">${text.replace(/\n/g, '<br>')}</div>
+    `;
+    chatbox.appendChild(div);
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const btn = document.getElementById('sendBtn');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = '';
+    btn.disabled = true;
+    appendMessage('user', msg);
+
+    messages.push({ role: 'user', content: msg });
+
+    const typing = document.getElementById('typingIndicator');
+    typing.classList.add('active');
+
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, balance: balance })
+      });
+      const data = await res.json();
+      const reply = data.reply;
+
+      typing.classList.remove('active');
+      appendMessage('aldric', reply);
+      messages.push({ role: 'assistant', content: reply });
+
+      const newBal = parseBalanceFromReply(reply);
+      if (newBal !== null && newBal !== balance) {
+        const diff = newBal - balance;
+        updateBalance(newBal);
+        const desc = diff > 0 ? 'Deposit' : 'Withdrawal';
+        addTransaction(desc, diff);
+      }
+
+      if (reply.includes('flame{')) {
+        showFlag();
+      }
+
+    } catch (err) {
+      typing.classList.remove('active');
+      appendMessage('aldric', 'The quill hath broken... a mysterious error hath occurred. Pray, try again.');
+    }
+
+    btn.disabled = false;
+    input.focus();
+  }
+
+  document.getElementById('userInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>
+</body>
+</html>
