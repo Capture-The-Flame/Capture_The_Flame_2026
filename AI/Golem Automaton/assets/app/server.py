@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, jsonify, render_template_string, send_file
 import os
 import time
 import pytesseract  # This is the OCR library that reads text from images
@@ -21,7 +21,7 @@ CORRECT_PHRASES = [
 ]
 
 # The main flag that players are trying to get
-FLAG = "Flame{4nc13nt_scr1b3s_r3v34l_th3_truth}"
+FLAG = "Flame{Anc1entG0l3m}"
 
 # Easter eggs for the other phrases
 EASTER_EGGS = {
@@ -172,10 +172,10 @@ def index():
             <h1>The Old Man and his Golem</h1>
             
             <p class="oracle-desc">
-                Hello, young lad! I see you've stumbled upon my latest work! 
-                It's a golem, which I created through an ancient arcane magic. 
+                Hello, young lad! I see you've stumbled upon my latest work!
+                It's a golem, which I created through an ancient arcane magic.
                 Come try it out! All you need to do is feed it a piece of parchment
-                with a certain incantation written on it. I made a tool to make the 
+                with a certain incantation written on it. I made a tool to make the
                 process easier, as well!
             </p>
             
@@ -184,7 +184,15 @@ def index():
             </p>
             
             <div class="code-box">
-                ./scripts/make_image.sh "YOUR PHRASE" "./scroll.png"
+                # Download the parchment creation script <br>
+                curl -O http://localhost:5000/download/make_image.sh <br>
+                curl -O http://localhost:5000/download/parchment.png <br> <br>
+
+                # Make it executable <br>
+                chmod +x make_image.sh <br> <br>
+
+                # Create your parchment <br> 
+                ./make_image.sh "YOUR PHRASE" "./scroll.png"
             </div>
             
             <p class="oracle-desc">
@@ -326,6 +334,38 @@ def health():
         'status': 'alive',
         'message': 'The Golem appears to be waiting patiently.'
     })
+
+@app.route('/download/make_image.sh')
+def download_script():
+    """
+    Download the image creation script.
+    Players need this to create valid parchments.
+    """
+    script_path = '/app/scripts/make_image.sh'
+    return send_file(
+        script_path,
+        as_attachment=True,
+        download_name='make_image.sh',
+        mimetype='text/x-shellscript'
+    )
+
+@app.route('/download/parchment.png')
+def download_parchment():
+    return send_file(
+        '/app/parchment.png',
+        as_attachment=True,
+        download_name='parchment.png',
+        mimetype='image/png'
+    )
+
+@app.route('/download/EzraSil-Po0B.ttf')
+def download_font():
+    return send_file(
+        '/app/fonts/EzraSil-Po0B.ttf',
+        as_attachment=True,
+        download_name='EzraSil-Po0B.ttf',
+        mimetype='font/ttf'
+    )
 
 # START THE SERVER
 if __name__ == '__main__':
