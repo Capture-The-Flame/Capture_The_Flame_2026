@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Usage: ./make_image.sh "<TEXT TO DISPLAY>" <OUTPUT PNG PATH>
 
 set -euo pipefail
 
@@ -8,15 +7,33 @@ OUT="${2:-}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-FONT="${SCRIPT_DIR}/../fonts/EzraSil-Po0B.ttf"
-PARCHMENT="${SCRIPT_DIR}/../app/parchment.png"
+# Look for font and parchment in current directory first, then script directory
+if [ -f "./EzraSil-Po0B.ttf" ]; then
+    FONT="./EzraSil-Po0B.ttf"
+elif [ -f "${SCRIPT_DIR}/../fonts/EzraSil-Po0B.ttf" ]; then
+    FONT="${SCRIPT_DIR}/../fonts/EzraSil-Po0B.ttf"
+else
+    echo "Error: EzraSil-Po0B.ttf not found!"
+    echo "Please download it: curl -O http://localhost:5000/download/EzraSil-Po0B.ttf"
+    exit 1
+fi
+
+if [ -f "./parchment.png" ]; then
+    PARCHMENT="./parchment.png"
+elif [ -f "${SCRIPT_DIR}/../parchment.png" ]; then
+    PARCHMENT="${SCRIPT_DIR}/../parchment.png"
+else
+    echo "Error: parchment.png not found!"
+    echo "Please download it: curl -O http://localhost:5000/download/parchment.png"
+    exit 1
+fi
 
 mkdir -p "$(dirname "$OUT")"
 
-# Use Python with Pillow instead
+# Use Python with Pillow
 python3 - "$TEXT" "$OUT" "$FONT" "$PARCHMENT" << 'PYTHON'
 import sys
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 
 text = sys.argv[1]
 output = sys.argv[2]
@@ -44,9 +61,6 @@ y = (200 - text_height) // 2
 
 # Draw text
 draw.text((x, y), text, font=font, fill="#2b1e0b")
-
-# Apply slight blur
-# img = img.filter(ImageFilter.GaussianBlur(radius=1))
 
 # Save
 img.save(output)

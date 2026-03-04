@@ -22,7 +22,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy all application files into the container
 COPY app/ ./app/
 COPY fonts/ ./fonts/
-COPY app/ parchment.png .
+COPY parchment.png .
 COPY scripts/ ./scripts/
 
 # Make the script executable
