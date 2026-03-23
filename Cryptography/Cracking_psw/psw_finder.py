@@ -1,8 +1,15 @@
 import hashlib
 
 FILE_NAME = "psw.txt"
-given_hash = "ccd6716608569d2df2ec83a9e7fc69909717cfff8f74528e8d13a9b9f32885cc"
+given_hash = "b4d50069458f02d73deb8cf4eb3de340031b230f026d4f1feca5879fe1fe06be"
 
+print("GENERATING HASH FOR THE PASSWORD:")
+psw = "Elephant16369131"
+hashed_psw = hashlib.sha256(psw.encode()).hexdigest()
+print(f"Hash of '{psw}': {hashed_psw}")
+
+
+# SOLUTION:
 with open(FILE_NAME, "r") as f:
     lines = f.readlines()
     for line in lines:
