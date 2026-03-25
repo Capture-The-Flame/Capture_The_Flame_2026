@@ -4,7 +4,8 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      net-tools iproute2 iputils-ping iputils-arping netcat-openbsd tcpdump nmap dnsutils procps curl && \
+      net-tools iproute2 iputils-ping iputils-arping netcat-openbsd \
+      tcpdump nmap dnsutils procps curl ttyd && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/player
@@ -12,7 +13,9 @@ WORKDIR /home/player
 COPY init_player.sh /usr/local/bin/init_player.sh
 RUN chmod +x /usr/local/bin/init_player.sh
 
-ENTRYPOINT ["/usr/local/bin/init_player.sh"]
+EXPOSE 7681
+
+ENTRYPOINT ["ttyd", "-p", "7681", "-W", "/usr/local/bin/init_player.sh"]
 CMD ["/bin/bash"]
 
 

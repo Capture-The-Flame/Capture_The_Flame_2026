@@ -1,14 +1,8 @@
-<pre align="center">
-  ____            _                    _   _           
- / ___|__ _ _ __ | |_ _   _ _ __ ___  | |_| |__   ___  
-| |   / _` | '_ \| __| | | | '__/ _ \ | __| '_ \ / _ \ 
-| |__| (_| | |_) | |_| |_| | | |  __/ | |_| | | |  __/ 
- \____\__,_| .__/ \__|\__,_|_|  \___|  \__|_|_|_|\___| 
-|  ___| | _|_| _ __ ___   ___  |___ \ / _ \___ \ / /_  
-| |_  | |/ _` | '_ ` _ \ / _ \   __) | | | |__) | '_ \ 
-|  _| | | (_| | | | | | |  __/  / __/| |_| / __/| (_) |
-|_|   |_|\__,_|_| |_| |_|\___| |_____|\___/_____|\___/ 
-</pre>
+<div align="center">
+<img src="./.public/banner.svg">
+</div>
+
+---
 
 **Welcome** to the challenge library of the **Capture the Flame 2026** competition. With a major emphasis on accessibility and education for cyber security concepts these challenges were made diligently by our team to ensure a fun and educational experience for the competitors! 
 

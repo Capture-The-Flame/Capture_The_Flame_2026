@@ -22,6 +22,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.player
+    ports:
+      - "7681:7681"
     networks:
       ctfnet:
         ipv4_address: 172.28.0.42
