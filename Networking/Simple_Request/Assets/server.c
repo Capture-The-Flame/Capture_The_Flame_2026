@@ -36,7 +36,7 @@ static const char sdoc_req[] = "GET /documentation.txt HTTP\1.1\r\n";
 // responses
 static const char OK200[] = "HTTP/1.1 200 OK\r\nContent-Length: %d\r\n\r\n";
 static const char greet_body[] = "greetings";
-static const char welcome_msg[] = "Welcome to the CHANGE_NAME 2.0 Capture the Flame challenge, you may begin whenever you like, best of luck!\n";
+static const char welcome_msg[] = "Welcome to the Simple Request 2.0 Capture the Flame challenge, you may begin whenever you like, best of luck!\n";
 static const char help_msg[] = "HTTP request structure: method /resource(s) HTTP/1.1\\r\\n\n.Method could be:\n\t1)GET\n\t2)POST\nResource(s) could be:\n\t1)a filename, eg: requirements.txt\n\t2)a number of bytes, eg: bytes=32\n\t3)user permissions, eg: user=allen\n\t4)a mix of 2 and 3 where 2 comes before 3\nIf you want further assistance, please refer to the challenge description, documentation.txt or ask a board member for help. Best of luck!\n";
 // error responses
 static char BR400[] = "HTTP/1.1 400 Bad Request\r\n\r\n";
