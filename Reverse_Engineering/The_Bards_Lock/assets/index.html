@@ -56,6 +56,7 @@
                 justify-content: center;
             }
 
+            /* ── Canvas fills background ── */
             #glcanvas {
                 position: fixed;
                 inset: 0;
@@ -71,6 +72,7 @@
                 pointer-events: none;
             }
 
+            /* ── Main UI Panel ── */
             #panel {
                 position: relative;
                 z-index: 10;
@@ -90,6 +92,7 @@
                     inset 0 1px 0 rgba(147, 112, 232, 0.15);
             }
 
+            /* Corner ornaments */
             #panel::before,
             #panel::after,
             #panel .corn-bl,
@@ -122,6 +125,7 @@
                 border-width: 0 2px 2px 0;
             }
 
+            /* Top rule */
             .top-rule {
                 display: flex;
                 align-items: center;
@@ -147,6 +151,7 @@
                 text-transform: uppercase;
             }
 
+            /* Title */
             .eyebrow {
                 font-family: "Share Tech Mono", monospace;
                 font-size: 8.5px;
@@ -176,6 +181,7 @@
                 line-height: 1.55;
             }
 
+            /* Divider */
             .div-gems {
                 display: flex;
                 align-items: center;
@@ -204,6 +210,7 @@
                 box-shadow: none;
             }
 
+            /* Status */
             #status {
                 font-family: "Share Tech Mono", monospace;
                 font-size: 10px;
@@ -241,6 +248,7 @@
                 }
             }
 
+            /* Rune pips */
             #pips {
                 display: flex;
                 gap: 8px;
@@ -278,12 +286,14 @@
                     0 0 24px rgba(147, 112, 232, 0.4);
             }
 
+            /* Rune symbols for each pip */
             .pip::before {
                 content: attr(data-rune);
                 font-family: "Cinzel Decorative", serif;
                 font-size: 11px;
             }
 
+            /* Buttons */
             .btn-row {
                 display: flex;
                 gap: 10px;
@@ -325,6 +335,7 @@
                 box-shadow: 0 0 18px rgba(200, 137, 42, 0.4);
             }
 
+            /* File label */
             #fileLabel {
                 display: inline-block;
                 cursor: pointer;
@@ -333,6 +344,7 @@
                 display: none;
             }
 
+            /* Flag reveal */
             #flag-box {
                 display: none;
                 margin-top: 20px;
@@ -373,6 +385,7 @@
                 text-shadow: 0 0 12px rgba(245, 192, 96, 0.5);
             }
 
+            /* Lore text */
             .lore {
                 font-style: italic;
                 font-size: 13.5px;
@@ -383,8 +396,9 @@
         </style>
     </head>
     <body>
+        <!-- WebGL magic circle -->
         <canvas id="glcanvas"></canvas>
-
+        <!-- Particle dust -->
         <canvas id="particles"></canvas>
 
         <div id="panel">
@@ -499,45 +513,45 @@
     float len = length(uv);
     float ang = atan(uv.y, uv.x);
 
-    // Deep void background
+
     float bg = fbm(uv*3.0 + vec2(uT*.04));
     vec3 col = mix(vec3(.02,.01,.06), vec3(.04,.02,.10), bg);
 
-    // Subtle nebula glow at center
+
     float nebula = exp(-len*len*8.0) * .6;
     col += vec3(.10,.05,.25) * nebula;
 
-    // ── Magic circles ──
+
     float glow = uStep;
     float pulse = .5 + .5*sin(uT*1.4);
     float pulse2 = .5 + .5*cos(uT*2.1);
 
-    // Outer ring — activates with progress
+
     float r1 = ring(.42, len, .004 + glow*.006);
     col += vec3(.28,.12,.70) * r1 * (.3 + glow*.7);
     col += vec3(.18,.06,.50) * ring(.44, len, .010) * glow * pulse;
 
-    // Middle ring — rotating dashes
+
     float dashAng = ang + uT * .3;
     float dash = step(.5, fract(dashAng / PI * 6.0));
     float r2 = ring(.30, len, .003) * dash;
     col += vec3(.50,.25,.90) * r2 * (.2 + glow*.8);
 
-    // Inner ring
+
     float r3 = ring(.18, len, .003 + glow*.004);
     col += vec3(.80,.60,1.0) * r3 * (.15 + glow*.85);
 
-    // Rotating rune marks on outer ring
+
     for(int i=0;i<9;i++){
       float a0 = float(i) * PI*2./9. + uT*.25;
-      vec2 rpos = vec2(cos(a0),.sin(a0)) * .42;
+      vec2 rpos = vec2(cos(a0),sin(a0)) * .42;
       float rdist = length(uv - rpos);
-      float lit = float(i) < uStep * 9.;
+      float lit = float(float(i) < uStep * 9.);
       float rg = exp(-rdist*rdist * 2200.) * (.6 + lit*.4);
       col += mix(vec3(.3,.1,.7), vec3(.9,.7,1.0), lit) * rg;
     }
 
-    // Six-pointed star lines (inner sigil)
+
     for(int k=0;k<6;k++){
       float a0 = float(k) * PI / 3.;
       vec2 dir = vec2(cos(a0), sin(a0));
@@ -546,24 +560,24 @@
       col += vec3(.5,.2,.9) * smoothstep(.004,.0, line) * inLen * glow;
     }
 
-    // Central core — blooms on unlock
+
     float core = exp(-len*len * 80.0);
     col += vec3(.6,.3,1.0) * core * glow * (.4 + .6*pulse2);
 
-    // Unlock effect
+
     if(uUnlock > .5){
       float flash = .5 + .5*sin(uT*4.0);
-      // Gold wave rings
+
       float uwave = sin(len*30. - uT*5.0) * .5 + .5;
       col += vec3(.9,.6,.1) * uwave * exp(-len*2.5) * .5;
-      // Center white burst
+
       float burst = exp(-len*len*25.) * (1. + .4*flash);
       col = mix(col, vec3(1.,.95,.8), burst * .8);
-      // Golden outer glow
+
       col += vec3(.8,.5,.1) * exp(-len*len*4.) * .4 * flash;
     }
 
-    // Vignette
+
     col *= 1. - smoothstep(.45, .85, len);
 
     gl_FragColor = vec4(col, 1.);
@@ -674,17 +688,33 @@
             let _lastT = 0;
             let _unlocked = false;
             let _audioCtx = null;
-            let _cooldownUntil = 0;
 
             const HOLD_MS = 400;
             const COOLDOWN_MS = 250;
-            const BIN_TOL = 2;
-            const SIG_THR = 180;
+            let _cooldownUntil = 0;
+            const FFT_SIZE = 4096;
+            const REF_SR = 44100;
+            const SIG_THR = 35;
+
+            function scaledTarget(state) {
+                const rawBin = _r(state);
+                return Math.round((rawBin * REF_SR) / _audioCtx.sampleRate);
+            }
+
+            function binTol() {
+                return Math.max(
+                    2,
+                    Math.round((3 * REF_SR) / _audioCtx.sampleRate),
+                );
+            }
 
             function getDominantBin(data) {
+                const maxBin = Math.round(
+                    (1200 * FFT_SIZE) / _audioCtx.sampleRate,
+                );
                 let mx = 0,
                     bin = -1;
-                for (let i = 3; i < 200; i++) {
+                for (let i = 3; i < maxBin; i++) {
                     if (data[i] > mx) {
                         mx = data[i];
                         bin = i;
@@ -695,7 +725,8 @@
 
             function initAnalyser(sourceNode) {
                 analyser = _audioCtx.createAnalyser();
-                analyser.fftSize = 4096;
+                analyser.fftSize = FFT_SIZE;
+                analyser.smoothingTimeConstant = 0;
                 sourceNode.connect(analyser);
                 dataArray = new Uint8Array(analyser.frequencyBinCount);
                 setStatus("[ THE SEAL LISTENS... ]", "listen");
@@ -711,9 +742,15 @@
 
                 analyser.getByteFrequencyData(dataArray);
                 const dominant = getDominantBin(dataArray);
-                const target = _r(_state);
+                const target = scaledTarget(_state);
+                const tol = binTol();
 
-                if (dominant !== -1 && Math.abs(dominant - target) <= BIN_TOL) {
+                if (dominant !== -1)
+                    console.log(
+                        `bin:${dominant} target:${target} diff:${Math.abs(dominant - target)} held:${Math.round(_heldMs)} tol:${tol}`,
+                    );
+
+                if (dominant !== -1 && Math.abs(dominant - target) <= tol) {
                     _heldMs += dt;
                     if (_heldMs >= HOLD_MS) {
                         _state++;
@@ -731,7 +768,7 @@
                     }
                 } else if (
                     dominant !== -1 &&
-                    Math.abs(dominant - target) > BIN_TOL
+                    Math.abs(dominant - target) > tol
                 ) {
                     if (_state > 0 && now > _cooldownUntil) {
                         _state = 0;
