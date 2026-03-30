@@ -264,7 +264,7 @@ The repo has the following structure
   <summary>Anar Enkhzol</summary>
   &nbsp;&nbsp;&nbsp;&nbsp;
   Github:
-  <a href="https://github.com/Aukovein" style="text-decoration: none;">
+  <a href="https://github.com/Aukovien" style="text-decoration: none;">
     Here
   </a>
 </details>
