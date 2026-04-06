@@ -62,34 +62,6 @@ The repo has the following structure
 </details>
 
 <details>
-  <summary><strong>Coda Richmond</strong> – Event Director</summary>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-  LinkedIn: 
-  <a href="https://www.linkedin.com/in/coda-richmond/" style=" text-decoration: none;">
-    Here
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  Github:
-  <a href="https://github.com/thecoda666" style="text-decoration: none;">
-    Here
-  </a>
-</details>
-
-<details>
-  <summary>Fatima Mora – Event Director</summary>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-  LinkedIn: 
-  <a href="https://www.linkedin.com/in/fatima-mora-garcia/" style=" text-decoration: none;">
-    Here
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  Github:
-  <a href="https://github.com/fmora22" style="text-decoration: none;">
-    Here
-  </a>
-</details>
-
-<details>
   <summary>Aleena Mehmood</summary>
     &nbsp;&nbsp;&nbsp;&nbsp;
   LinkedIn: 
